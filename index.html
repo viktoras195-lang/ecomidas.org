@@ -1,2 +1,135 @@
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sapiomidas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--forest:#1a2a1e;--moss:#2d4a32;--fern:#3d6b45;--silver:#c8d4c0;--mist:#e8ede4;--emerald:#4a7c52;--gold:#b8c9a0;--stone:#8a9e88;--white:#f4f7f2;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background-color:var(--forest);color:var(--mist);font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.02em;overflow-x:hidden;}
+``````
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(26,42,30,.97),transparent);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.12em;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{color:var(--silver);text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--white);}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(61,107,69,.18) 0%,transparent 70%),linear-gradient(160deg,#1a2a1e 0%,#1e3024 50%,#162219 100%);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+``````
+.hero-eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);margin-bottom:1.5rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6.5rem);font-weight:300;line-height:1.0;color:var(--white);letter-spacing:.04em;margin-bottom:2rem;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--gold);line-height:1.6;margin-bottom:.6rem;}
+.hero-tagline-sub{font-size:.85rem;color:var(--stone);line-height:1.8;letter-spacing:.06em;}
+.hero-divider{width:60px;height:1px;background:var(--emerald);margin:2.5rem 0;}
+.hero-cta{display:inline-block;padding:.85rem 2.4rem;border:1px solid var(--emerald);color:var(--gold);text-decoration:none;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;transition:all .4s;}
+.hero-cta:hover{background:rgba(74,124,82,.2);border-color:var(--gold);}
+section{padding:7rem 3rem;max-width:1100px;margin:0 auto;}
+.section-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald);margin-bottom:1rem;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:2rem;}
+p{font-size:1rem;line-height:1.9;color:var(--silver);max-width:640px;}
+``````
+#about{border-top:1px solid rgba(74,124,82,.2);}
+.concepts-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;}
+.concept-card{padding:2.5rem;border:1px solid rgba(74,124,82,.25);background:rgba(45,74,50,.15);transition:border-color .4s,background .4s;position:relative;}
+.concept-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--emerald);transition:height .5s;}
+.concept-card:hover::before{height:100%;}
+.concept-card:hover{border-color:rgba(74,124,82,.5);background:rgba(45,74,50,.25);}
+.concept-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(74,124,82,.3);line-height:1;margin-bottom:1rem;}
+.concept-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--gold);margin-bottom:1rem;}
+.essay-item{padding:1.8rem 0;border-bottom:1px solid rgba(74,124,82,.15);display:flex;justify-content:space-between;align-items:baseline;text-decoration:none;transition:padding-left .3s;}
+.essay-item:hover{padding-left:1rem;}
+.essay-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--mist);}
+.essay-meta{font-size:.72rem;color:var(--stone);letter-spacing:.1em;text-transform:uppercase;margin-left:2rem;}
+.contact-email{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,201,160,.3);padding-bottom:.2rem;transition:border-color .3s;}
+.contact-email:hover{border-color:var(--gold);}
+footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);font-size:.75rem;color:var(--stone);}
+@media(max-width:700px){nav{padding:1.2rem 1.5rem;}.nav-links{gap:1.2rem;}#hero,section{padding:5rem 1.5rem;}.concepts-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+``````
+<body>
+<nav>
+<a class="nav-logo" href="#hero">Sapiomidas</a>
+<ul class="nav-links">
+<li><a href="#about">О проекте</a></li>
+<li><a href="#concepts">Концепции</a></li>
+<li><a href="#essays">Эссе</a></li>
+<li><a href="#discussions">Дискуссии</a></li>
+<li><a href="#contact">Контакт</a></li>
+</ul>
+</nav>
+<section id="hero" style="max-width:100%;padding-left:3rem;padding-right:3rem;">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<p class="hero-eyebrow">ecomidas.org</p>
+<h1>Sapiomidas</h1>
+<p class="hero-tagline">Сила в разуме и здравом смысле</p>
+<p class="hero-tagline-sub">Strength through reason and common sense<br>Kracht door rede en gezond verstand</p>
+<div class="hero-divider"></div>
+<a class="hero-cta" href="#about">Войти</a>
+</div>
+</section>
+``````
+<section id="about">
+<p class="section-label">О проекте · About · Over het project</p>
+<h2>Два начала,<br>один исток</h2>
+<p>Sapiomidas — это пространство двух взаимосвязанных идей, выросших из одного корня. Они разошлись, чтобы обрести форму, и теперь возвращаются вместе — как горы и реки в одном ландшафте: разные, но неотделимые.</p>
+<br>
+<p style="font-style:italic;color:var(--stone);font-size:.9rem;">Two ideas from one source — separated to gain form, reunited in purpose.</p>
+</section>
+<section id="concepts" style="border-top:1px solid rgba(74,124,82,.2);">
+<p class="section-label">Концепции · Concepts</p>
+<h2>Сапиократия<br>и Экомидас</h2>
+<div class="concepts-grid">
+<div class="concept-card">
+<div class="concept-num">I</div>
+<div class="concept-title">Сапиократия</div>
+<p>Разум и совесть как личный принцип управления собой и миром. Не идеология — а внутренний компас, который выбирают.</p>
+<br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Reason and conscience as a personal governing principle.</p>
+</div>
+<div class="concept-card">
+<div class="concept-num">II</div>
+<div class="concept-title">Экомидас</div>
+<p>Модель, делающая восстановление природы финансово привлекательнее её разрушения. Перенаправление существующих мотивов в сторону регенерации.</p>
+<br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Making ecological restoration more profitable than exploitation.</p>
+</div>
+</div>
+</section>
+```
 
-https://claude.ai/api/organizations/3c12c702-c5e7-4d19-9f44-37e5370b00ae/conversations/c2553cfe-0bc3-459c-a5ae-d9f9f2d81d42/wiggle/download-file?path=%2Fmnt%2Fuser-data%2Foutputs%2Findex.html
+```
+<section id="essays" style="border-top:1px solid rgba(74,124,82,.2);">
+<p class="section-label">Эссе · Essays</p>
+<h2>Мысли,<br>записанные вслух</h2>
+<p>Философские эссе, мемуарные зарисовки, наблюдения.</p>
+<br>
+<a class="essay-item" href="https://medium.com/@vanholland" target="_blank">
+<span class="essay-title">Капкан чужих желаний</span>
+<span class="essay-meta">Medium · VanHolland</span>
+</a>
+</section>
+<section id="discussions" style="border-top:1px solid rgba(74,124,82,.2);">
+<p class="section-label">Дискуссии · Discussions</p>
+<h2>Диалог открыт</h2>
+<p>Идеи живут в столкновении с другими идеями. Несогласие приветствуется так же, как согласие.</p>
+</section>
+<section id="contact" style="border-top:1px solid rgba(74,124,82,.2);text-align:center;">
+<p class="section-label">Контакт · Contact</p>
+<h2>Связаться</h2>
+<p style="margin:0 auto 2rem;">Вопросы, размышления, предложения о сотрудничестве.</p>
+<a class="contact-email" href="mailto:contact@ecomidas.org">contact@ecomidas.org</a>
+</section>
+<footer>
+<p>© 2026 Sapiomidas · ecomidas.org · VanHolland</p>
+<p style="margin-top:.5rem;">Нидерланды · Netherlands · Nederland</p>
+</footer>
+</body>
+</html>
+```
+
+
