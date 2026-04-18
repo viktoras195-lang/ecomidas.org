@@ -46,114 +46,114 @@ p{font-size:1rem;line-height:1.9;color:var(--silver);max-width:640px;}
 footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);font-size:.75rem;color:var(--stone);}
 @media(max-width:700px){nav{padding:1.2rem 1.5rem;}.nav-links{gap:1.2rem;}#hero,section{padding:5rem 1.5rem;}.concepts-grid{grid-template-columns:1fr;}}
 
-/* ── ANIMATED SLOGANS ── */
+/* ── СЛОГАНЫ С ФОТОГРАФИЯМИ ── */
 #slogans {
-  max-width: 100%;
-  padding: 5rem 3rem;
-  background: linear-gradient(to bottom, rgba(26,42,30,0) 0%, rgba(22,34,25,0.6) 50%, rgba(26,42,30,0) 100%);
-  border-top: 1px solid rgba(74,124,82,.12);
-  border-bottom: 1px solid rgba(74,124,82,.12);
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.slogan-stage {
-  width: min(700px, 90vw);
-  text-align: center;
-  min-height: 180px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.slogan-card {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-.slogan-card.active { display: flex; }
-
-.slogan-eyebrow {
-  font-size: .65rem;
-  letter-spacing: .32em;
-  text-transform: uppercase;
-  color: var(--emerald);
-  font-weight: 300;
+.s-photo {
+  position: absolute;
+  inset: 0;
   opacity: 0;
-  animation: slogFadeUp .5s ease forwards .1s;
+  transition: opacity 1.2s ease;
 }
-
-.slogan-text {
+.s-photo.on { opacity: 1; }
+.s-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.s-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,20,12,0.52);
+  z-index: 1;
+}
+.s-stage {
+  position: relative;
+  z-index: 2;
+  width: min(700px, 88vw);
+  text-align: center;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+.s-card { display: none; flex-direction: column; align-items: center; gap: 1.1rem; }
+.s-card.active { display: flex; }
+.s-label {
+  font-size: .64rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  animation: sFadeUp .5s ease forwards .1s;
+}
+.s-text {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(1.55rem, 3.8vw, 2.6rem);
+  font-size: clamp(1.5rem, 3.8vw, 2.5rem);
   line-height: 1.35;
-  color: var(--white);
-  letter-spacing: .02em;
+  color: #f0ede6;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
 }
-
-.slogan-text .w {
+.s-text .w {
   display: inline-block;
   opacity: 0;
-  transform: translateY(14px);
-  animation: slogWord .45s cubic-bezier(.22,1,.36,1) forwards;
+  transform: translateY(13px);
+  animation: sWord .44s cubic-bezier(.22,1,.36,1) forwards;
 }
-
-.slogan-thin-line {
-  width: 36px;
-  height: 1px;
+.s-line {
+  width: 34px; height: 1px;
   background: var(--gold);
   opacity: 0;
-  animation: slogFadeIn .5s ease forwards;
+  animation: sFade .5s ease forwards;
 }
-
-.slogan-nav {
+.s-nav {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.6rem;
 }
-
-.slogan-btn {
-  background: none;
-  border: 1px solid rgba(74,124,82,.4);
-  color: var(--stone);
+.s-btn {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.65);
   cursor: pointer;
   width: 32px; height: 32px;
   border-radius: 50%;
   font-size: .85rem;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color .3s, color .3s;
+  transition: all .3s;
 }
-.slogan-btn:hover { border-color: var(--emerald); color: var(--gold); }
-
-.slogan-dots { display: flex; gap: .45rem; }
-.slogan-dot {
+.s-btn:hover { border-color: var(--gold); color: var(--gold); }
+.s-dots { display: flex; gap: .4rem; }
+.s-dot {
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: var(--stone);
+  background: rgba(255,255,255,0.3);
   cursor: pointer;
   transition: background .3s, transform .3s;
 }
-.slogan-dot.on { background: var(--emerald); transform: scale(1.5); }
-
-@keyframes slogWord {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slogFadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes slogFadeIn {
-  to { opacity: .5; }
-}
+.s-dot.on { background: var(--gold); transform: scale(1.5); }
+@keyframes sWord { to { opacity:1; transform:translateY(0); } }
+@keyframes sFadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes sFade { to { opacity:.55; } }
 </style>
 </head>
 <body>
+
 <nav>
 <a class="nav-logo" href="#hero">Sapiomidas</a>
 <ul class="nav-links">
@@ -177,13 +177,19 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 </div>
 </section>
 
-<!-- ANIMATED SLOGANS -->
+<!-- СЛОГАНЫ С ФОТОГРАФИЯМИ -->
 <div id="slogans">
-  <div class="slogan-stage" id="sloganStage"></div>
-  <div class="slogan-nav">
-    <button class="slogan-btn" id="sPrev">←</button>
-    <div class="slogan-dots" id="sDots"></div>
-    <button class="slogan-btn" id="sNext">→</button>
+  <div class="s-photo on"><img src="IMG-20251018-WA0003.jpg" alt=""></div>
+  <div class="s-photo"><img src="IMG20251118164622.jpg" alt=""></div>
+  <div class="s-photo"><img src="IMG20260327101727.jpg" alt=""></div>
+  <div class="s-photo"><img src="IMG20260401065048.jpg" alt=""></div>
+  <div class="s-photo"><img src="IMG20260411065548.jpg" alt=""></div>
+  <div class="s-overlay"></div>
+  <div class="s-stage" id="sStage"></div>
+  <div class="s-nav">
+    <button class="s-btn" id="sPrev">←</button>
+    <div class="s-dots" id="sDots"></div>
+    <button class="s-btn" id="sNext">→</button>
   </div>
 </div>
 
@@ -262,21 +268,22 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <script>
 const slogans = [
   { label: "Сапиократия", text: "Разум — не привилегия. Это единственная власть, которой можно доверять." },
-  { label: "Экомидас",    text: "Природа восстанавливается не потому что так правильно — а потому что это выгодно." },
-  { label: "VanHolland",  text: "Идеи не изобретают. Их узнают." },
-  { label: "Сапиомидас",  text: "Человеческая природа — не проблема. Это материал." },
+  { label: "Экомидас", text: "Природа восстанавливается не потому что так правильно — а потому что это выгодно." },
+  { label: "VanHolland", text: "Идеи не изобретают. Их узнают." },
+  { label: "Сапиомидас", text: "Человеческая природа — не проблема. Это материал." },
   { label: "Сапиократия", text: "Гусиный тест: если гусь умнее кандидата — кандидат не проходит." }
 ];
 
 let cur = 0, busy = false;
-const stage = document.getElementById('sloganStage');
+const stage = document.getElementById('sStage');
 const dotsEl = document.getElementById('sDots');
+const photos = document.querySelectorAll('.s-photo');
 
 function buildDots() {
   dotsEl.innerHTML = '';
   slogans.forEach((_, i) => {
     const d = document.createElement('div');
-    d.className = 'slogan-dot' + (i === cur ? ' on' : '');
+    d.className = 's-dot' + (i === cur ? ' on' : '');
     d.onclick = () => go(i);
     dotsEl.appendChild(d);
   });
@@ -286,23 +293,24 @@ function render() {
   const s = slogans[cur];
   const words = s.text.split(' ');
   const html = words.map((w, i) =>
-    `<span class="w" style="animation-delay:${0.25 + i * 0.065}s">${w}</span>`
+    `<span class="w" style="animation-delay:${0.2 + i * 0.065}s">${w}</span>`
   ).join(' ');
-  const lineDelay = 0.25 + words.length * 0.065 + 0.1;
+  const lineDelay = 0.2 + words.length * 0.065 + 0.1;
   stage.innerHTML = `
-    <div class="slogan-card active">
-      <div class="slogan-eyebrow">${s.label}</div>
-      <div class="slogan-text">${html}</div>
-      <div class="slogan-thin-line" style="animation-delay:${lineDelay}s"></div>
+    <div class="s-card active">
+      <div class="s-label">${s.label}</div>
+      <div class="s-text">${html}</div>
+      <div class="s-line" style="animation-delay:${lineDelay}s"></div>
     </div>`;
 }
 
 function go(idx) {
   if (busy || idx === cur) return;
   busy = true;
-  cur = idx;
-  stage.style.transition = 'opacity .3s';
   stage.style.opacity = '0';
+  photos[cur].classList.remove('on');
+  cur = idx;
+  photos[cur].classList.add('on');
   setTimeout(() => {
     render();
     stage.style.opacity = '1';
