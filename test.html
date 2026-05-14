@@ -133,7 +133,7 @@ textarea:focus { border-color:#4a7c52; }
     <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
     <div class="options" id="q2">
       <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
-      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
+      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте&lt;/span></div>
       <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">В</span><span class="opt-text">Помогаю молча, не касаясь прошлого</span></div>
       <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю — но это не значит что простил или пустил обратно</span></div>
     </div>
@@ -320,4 +320,3 @@ function calcScores() {
 function drawRadar(sc) {
   var c = document.getElementB
 go(0,1)
-  
