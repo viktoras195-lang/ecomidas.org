@@ -90,7 +90,7 @@ textarea:focus { border-color:#4a7c52; }
   .hero { padding:6rem 1.2rem 2.5rem; }
   .intro, .test-wrap, .result-wrap, .progress-wrap { padding-left:1.2rem; padding-right:1.2rem; }
 }
-</style>
+  </style>
 </head>
 <body>
 
@@ -133,7 +133,7 @@ textarea:focus { border-color:#4a7c52; }
     <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
     <div class="options" id="q2">
       <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
-      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте&lt;/span></div>
+      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
       <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">В</span><span class="opt-text">Помогаю молча, не касаясь прошлого</span></div>
       <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю — но это не значит что простил или пустил обратно</span></div>
     </div>
@@ -318,5 +318,53 @@ function calcScores() {
 }
 
 function drawRadar(sc) {
-  var c = document.getElementB
-go(0,1)
+  var c = document.getElementById('radar');
+  var ctx = c.getContext('2d');
+  var cx=150,cy=150,r=110,n=5;
+  var lbls=['Эмпатия','Горизонт','Проф.','Мораль','Социум'];
+  var ang=[];
+  for(var i=0;i<n;i++) ang.push((Math.PI*2*i/n)-Math.PI/2);
+  ctx.clearRect(0,0,300,300);
+  for(var lv=2;lv<=10;lv+=2){ctx.beginPath();for(var i=0;i<n;i++){var x=cx+(r*lv/10)*Math.cos(ang[i]);var y=cy+(r*lv/10)*Math.sin(ang[i]);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.closePath();ctx.strokeStyle='rgba(74,124,82,0.15)';ctx.lineWidth=1;ctx.stroke();}
+  for(var i=0;i<n;i++){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+r*Math.cos(ang[i]),cy+r*Math.sin(ang[i]));ctx.strokeStyle='rgba(74,124,82,0.2)';ctx.lineWidth=1;ctx.stroke();}
+  ctx.beginPath();for(var i=0;i<n;i++){var x=cx+(r*sc[i]/10)*Math.cos(ang[i]);var y=cy+(r*sc[i]/10)*Math.sin(ang[i]);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.closePath();ctx.fillStyle='rgba(74,124,82,0.2)';ctx.fill();ctx.strokeStyle='#4a7c52';ctx.lineWidth=2;ctx.stroke();
+  for(var i=0;i<n;i++){var x=cx+(r*sc[i]/10)*Math.cos(ang[i]);var y=cy+(r*sc[i]/10)*Math.sin(ang[i]);ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle='#4a7c52';ctx.fill();}
+  ctx.font='11px Jost,sans-serif';ctx.fillStyle='rgba(200,212,192,0.7)';ctx.textAlign='center';
+  for(var i=0;i<n;i++){ctx.fillText(lbls[i],cx+(r+20)*Math.cos(ang[i]),cy+(r+20)*Math.sin(ang[i])+4);}
+}
+
+var dimInfo=[
+  {name:'Эмпатия',texts:['Эмпатия присутствует, но преимущественно реактивная.','Развитая эмпатия с чёткими границами. Видишь людей как отдельные миры.','Глубокая и зрелая эмпатия. Действуешь рефлекторно в кризисе.']},
+  {name:'Горизонт планирования',texts:['Ориентация на ближайший результат.','Компасный тип мышления. Цель видна, путь открывается в движении.','Расширенный горизонт. Думаешь о том что останется после тебя.']},
+  {name:'Профессионализм',texts:['Стандарт определяется внешними требованиями.','Внутренний стандарт выше внешнего контроля. Качество — личная позиция.','Абсолютный внутренний стандарт. Не можешь сделать плохо — физически не можешь.']},
+  {name:'Моральный компас',texts:['Решения принимаются ситуативно.','Принципиальность с гибкостью формы. Берёшь на себя груз решения.','Моральная целостность без театра. Принимаешь тяжёлые решения и несёшь их последствия.']},
+  {name:'Социальное мышление',texts:['Социальные вопросы воспринимаются как внешние.','Системное мышление. Видишь механизмы за явлениями.','Глубокое системное понимание. Один принцип: учить, строить, направлять энергию.']}
+];
+
+function buildDims(sc) {
+  var c=document.getElementById('dims');c.innerHTML='';
+  for(var i=0;i<5;i++){
+    var txt=sc[i]<5?dimInfo[i].texts[0]:sc[i]<8?dimInfo[i].texts[1]:dimInfo[i].texts[2];
+    var d=document.createElement('div');d.className='dim';
+    d.innerHTML='<div class="dim-head"><span class="dim-name">'+dimInfo[i].name+'</span><span class="dim-score">'+sc[i]+' / 10</span></div><div class="dim-bar"><div class="dim-fill" id="df'+i+'"></div></div><p class="dim-text">'+txt+'</p>';
+    c.appendChild(d);
+  }
+  setTimeout(function(){for(var i=0;i<5;i++){(function(idx){setTimeout(function(){var el=document.getElementById('df'+idx);if(el)el.style.width=(sc[idx]*10)+'%';},idx*150);})(i);}},100);
+}
+
+function restart() {
+  ans={};
+  var opts=document.getElementsByClassName('option');
+  for(var i=0;i<opts.length;i++) opts[i].classList.remove('sel');
+  var tas=document.getElementsByTagName('textarea');
+  for(var i=0;i<tas.length;i++) tas[i].value='';
+  document.getElementById('reswrap').style.display='none';
+  document.getElementById('testwrap').style.display='block';
+  for(var i=1;i<5;i++) document.getElementById('b'+i).classList.remove('active');
+  document.getElementById('b0').classList.add('active');
+  document.getElementById('pbar').style.width='0%';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
