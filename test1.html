@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Тест Сапиократии · Ecomidas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --les: #1A2A1E;
+  --mox: #2d4a32;
+  --pap: #3d6b45;
+  --sil: #c8d4c0;
+  --tum: #e8ede4;
+  --izm: #4a7c52;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:#1A2A1E; color:#e8ede4; font-family:'Jost',sans-serif; font-weight:300; min-height:100vh; }
+
+nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; background:rgba(26,42,30,0.9); border-bottom:1px solid rgba(74,124,82,0.2); }
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#c8d4c0; text-decoration:none; }
+.nav-back { font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; color:#c8d4c0; text-decoration:none; opacity:0.7; }
+
+.hero { padding:7rem 2rem 3rem; border-bottom:1px solid rgba(74,124,82,0.2); }
+.section-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:1rem; }
+h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,6vw,4.5rem); font-weight:300; color:#e8ede4; margin-bottom:1rem; line-height:1.1; }
+.hero-sub { font-size:.95rem; color:#c8d4c0; max-width:560px; line-height:1.7; opacity:0.85; }
+
+.intro { padding:3rem 2rem; border-bottom:1px solid rgba(74,124,82,0.2); }
+.intro p { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:#c8d4c0; line-height:1.8; max-width:640px; }
+
+.progress-wrap { padding:2rem 2rem 0; }
+.progress-bar { height:2px; background:rgba(74,124,82,0.2); border-radius:1px; overflow:hidden; }
+.progress-fill { height:100%; background:#4a7c52; transition:width .5s; border-radius:1px; width:0%; }
+
+.test-wrap { padding:2rem; max-width:780px; }
+
+.block { display:none; }
+.block.active { display:block; }
+
+.block-number { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; }
+.block-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:#e8ede4; margin-bottom:.6rem; }
+.block-desc { font-size:.85rem; color:#c8d4c0; opacity:.7; line-height:1.6; margin-bottom:2rem; }
+
+.question { margin-bottom:2rem; border-left:2px solid rgba(74,124,82,0.4); padding-left:1.2rem; }
+.question-text { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; line-height:1.6; margin-bottom:1rem; }
+
+.options { display:flex; flex-direction:column; gap:.5rem; }
+.option { padding:.85rem 1rem; border:1px solid rgba(74,124,82,0.25); border-radius:4px; cursor:pointer; display:flex; gap:.8rem; align-items:flex-start; background:transparent; transition:all .2s; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.option.sel { border-color:#4a7c52; background:rgba(74,124,82,0.15); }
+.opt-letter { font-size:.72rem; color:#4a7c52; font-weight:500; min-width:1rem; padding-top:.1rem; }
+.opt-text { font-size:.9rem; color:#c8d4c0; line-height:1.5; }
+
+.dilemma-box { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.7; padding:1rem 1.2rem; border-left:2px solid #4a7c52; background:rgba(74,124,82,0.06); margin-bottom:1rem; border-radius:0 4px 4px 0; }
+
+textarea { width:100%; min-height:110px; background:rgba(45,74,50,0.2); border:1px solid rgba(74,124,82,0.3); border-radius:4px; color:#e8ede4; font-family:'Cormorant Garamond',serif; font-size:1.05rem; padding:.9rem 1rem; resize:vertical; outline:none; line-height:1.6; }
+textarea::placeholder { color:rgba(200,212,192,0.3); font-style:italic; }
+textarea:focus { border-color:#4a7c52; }
+
+.btn-row { display:flex; gap:1rem; margin-top:2rem; align-items:center; flex-wrap:wrap; }
+.btn-next { padding:.75rem 2rem; background:transparent; border:1px solid #4a7c52; color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.btn-back { padding:.75rem 1.5rem; background:transparent; border:1px solid rgba(74,124,82,0.3); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.step-num { font-size:.75rem; color:#c8d4c0; opacity:.45; margin-left:auto; }
+
+.result-wrap { display:none; padding:2rem; max-width:780px; }
+.result-wrap.active { display:block; }
+.result-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; margin-top:1rem; }
+.result-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:#e8ede4; margin-bottom:.3rem; }
+.result-sub { font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:#4a7c52; margin-bottom:2rem; }
+
+.radar-wrap { display:flex; justify-content:center; margin:1.5rem 0 2.5rem; }
+
+.dim { margin-bottom:1.8rem; padding-bottom:1.8rem; border-bottom:1px solid rgba(74,124,82,0.15); }
+.dim:last-child { border-bottom:none; }
+.dim-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.4rem; }
+.dim-name { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; }
+.dim-score { font-size:.78rem; color:#4a7c52; }
+.dim-bar { height:3px; background:rgba(74,124,82,0.2); border-radius:2px; overflow:hidden; margin-bottom:.7rem; }
+.dim-fill { height:100%; background:linear-gradient(90deg,#3d6b45,#4a7c52); border-radius:2px; transition:width 1s ease .2s; width:0%; }
+.dim-text { font-size:.87rem; color:#c8d4c0; line-height:1.7; opacity:.85; }
+
+.result-note { margin-top:2.5rem; padding:1.2rem 1.5rem; border:1px solid rgba(74,124,82,0.3); border-radius:4px; background:rgba(74,124,82,0.05); }
+.result-note p { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.8; }
+
+.restart { margin-top:2rem; padding:.75rem 2rem; background:transparent; border:1px solid rgba(74,124,82,0.35); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; display:inline-block; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+
+@media(max-width:600px) {
+  nav { padding:1rem 1.2rem; }
+  .hero { padding:6rem 1.2rem 2.5rem; }
+  .intro, .test-wrap, .result-wrap, .progress-wrap { padding-left:1.2rem; padding-right:1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Сапиомидас</a>
+  <a class="nav-back" href="index.html">← Главная</a>
+</nav>
+
+<div class="hero">
+  <p class="section-label">Диалог · Профиль</p>
+  <h1>Тест Сапиократии</h1>
+  <p class="hero-sub">Не типология. Не ярлык. Профиль — как форма, уникальная для каждого. Пять измерений.</p>
+</div>
+
+<div class="intro">
+  <p>Отвечай как думаешь, а не как хочешь выглядеть. Нет правильных ответов — есть только твои.</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
+</div>
+
+<div class="test-wrap" id="testwrap">
+
+<div class="block active" id="b0">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 01 · Эмпатия</p>
+  <h2 class="block-title">Восприятие других</h2>
+  <p class="block-desc">Как ты относишься к людям — близким и чужим.</p>
+  <div class="question">
+    <p class="question-text">Коллега допустил серьёзную ошибку в проекте. Он сам об этом не знает. Что делаешь?</p>
+    <div class="options" id="q1">
+      <div class="option" onclick="pick('q1',1,this)"><span class="opt-letter">А</span><span class="opt-text">Сообщаю руководству — это их задача</span></div>
+      <div class="option" onclick="pick('q1',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Говорю коллеге напрямую, до того как дойдёт до других</span></div>
+      <div class="option" onclick="pick('q1',3,this)"><span class="opt-letter">В</span><span class="opt-text">Жду — может само разрешится</span></div>
+      <div class="option" onclick="pick('q1',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю исправить ошибку, не поднимая шума</span></div>
+    </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
+    <div class="options" id="q2">
+      <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
+      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
+      <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">В</span><span class="opt-text">Помогаю молча, не касаясь прошлого</span></div>
+      <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю — но это не значит что простил или пустил обратно</span></div>
+    </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Ты наблюдаешь за незнакомым человеком — в очереди, в транспорте. Что происходит внутри?</p>
+    <div class="options" id="q3">
+      <div class="option" onclick="pick('q3',1,this)"><span class="opt-letter">А</span><span class="opt-text">Ничего особенного, просто фон</span></div>
+      <div class="option" onclick="pick('q3',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Оцениваю — симпатичен или нет</span></div>
+      <div class="option" onclick="pick('q3',3,this)"><span class="opt-letter">В</span><span class="opt-text">Думаю какая у него жизнь, история, мир</span></div>
+      <div class="option" onclick="pick('q3',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Фантазирую о нём — потом забываю</span></div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-next" onclick="go(0,1)">Далее</button>
+    <span class="step-num">1 / 5</span>
+  </div>
+</div>
+
+<div class="block" id="b1">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 02 · Горизонт</p>
+  <h2 class="block-title">Планирование и ответственность</h2>
+  <p class="block-desc">Как ты видишь время и берёшь на себя последствия.</p>
+  <div class="question">
+    <p class="question-text">Ты начинаешь важное дело. Где твой взгляд — инстинктивно?</p>
+    <div class="options" id="q4">
+      <div class="option" onclick="pick('q4',1,this)"><span class="opt-letter">А</span><span class="opt-text">На ближайшем результате — неделя, месяц</span></div>
+      <div class="option" onclick="pick('q4',2,this)"><span class="opt-letter">Б</span><span class="opt-text">На цели — путь открывается в движении</span></div>
+      <div class="option" onclick="pick('q4',3,this)"><span class="opt-letter">В</span><span class="opt-text">На том что останется после меня</span></div>
+      <div class="option" onclick="pick('q4',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не вижу — просто делаю первый шаг</span></div>
+    </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Ты принял решение которое оказалось ошибочным. Пострадали другие люди.</p>
+    <div class="options" id="q5">
+      <div class="option" onclick="pick('q5',1,this)"><span class="opt-letter">А</span><span class="opt-text">Объясняю — были объективные причины</span></div>
+      <div class="option" onclick="pick('q5',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Признаю ошибку и пытаюсь исправить чего бы это ни стоило</span></div>
+      <div class="option" onclick="pick('q5',3,this)"><span class="opt-letter">В</span><span class="opt-text">Молча исправляю — без лишних слов</span></div>
+      <div class="option" onclick="pick('q5',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Жду пока само забудется</span></div>
+    </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Ты знаешь что твоя идея скорее всего не реализуется при твоей жизни. Это меняет что-то?</p>
+    <textarea placeholder="Напиши своими словами..." oninput="ans['q6']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(1,0)">Назад</button>
+    <button class="btn-next" onclick="go(1,2)">Далее</button>
+    <span class="step-num">2 / 5</span>
+  </div>
+</div>
+
+<div class="block" id="b2">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 03 · Профессионализм</p>
+  <h2 class="block-title">Стандарт и качество</h2>
+  <p class="block-desc">Откуда берётся твой стандарт работы.</p>
+  <div class="question">
+    <p class="question-text">Ты делаешь работу. Никто не проверяет, заказчик не заметит разницы. Как делаешь?</p>
+    <div class="options" id="q7">
+      <div class="option" onclick="pick('q7',1,this)"><span class="opt-letter">А</span><span class="opt-text">Достаточно хорошо — зачем тратить лишнее время</span></div>
+      <div class="option" onclick="pick('q7',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Так же как всегда — внешний контроль не меняет</span></div>
+      <div class="option" onclick="pick('q7',3,this)"><span class="opt-letter">В</span><span class="opt-text">Лучше обычного — раз никто не видит, делаю для себя</span></div>
+      <div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не могу сделать плохо — если не получится, вернусь и переделаю</span></div>
+    </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Тебя просят сделать что-то неправильно. Заказчик настаивает и платит.</p>
+    <div class="options" id="q8">
+      <div class="option" onclick="pick('q8',1,this)"><span class="opt-letter">А</span><span class="opt-text">Делаю как просят — клиент всегда прав</span></div>
+      <div class="option" onclick="pick('q8',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Делаю как просят, но предупреждаю о последствиях</span></div>
+      <div class="option" onclick="pick('q8',3,this)"><span class="opt-letter">В</span><span class="opt-text">Отказываюсь от заказа</span></div>
+      <div class="option" onclick="pick('q8',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Делаю правильно — даже в одиночку, даже под давлением</span></div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(2,1)">Назад</button>
+    <button class="btn-next" onclick="go(2,3)">Далее</button>
+    <span class="step-num">3 / 5</span>
+  </div>
+</div>
+
+<div class="block" id="b3">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 04 · Моральный компас</p>
+  <h2 class="block-title">Дилеммы без правильных ответов</h2>
+  <p class="block-desc">Здесь нет вариантов. Только ситуация и твои слова.</p>
+  <div class="question">
+    <div class="dilemma-box">Ты можешь спасти десятерых незнакомых людей — но ценой серьёзного вреда одному человеку, которого знаешь лично и который ни в чём не виноват.</div>
+    <p class="question-text">Что делаешь?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q9']=this.value"></textarea>
+  </div>
+  <div class="question">
+    <div class="dilemma-box">Ты знаешь правду о ситуации. Правда причинит боль человеку — но без неё он примет неверное решение с долгими последствиями.</div>
+    <p class="question-text">Говоришь?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q10']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(3,2)">Назад</button>
+    <button class="btn-next" onclick="go(3,4)">Далее</button>
+    <span class="step-num">4 / 5</span>
+  </div>
+</div>
+
+<div class="block" id="b4">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 05 · Социальное мышление</p>
+  <h2 class="block-title">Сложные системные вопросы</h2>
+  <p class="block-desc">Религия, власть, неравенство — без простых ответов.</p>
+  <div class="question">
+    <div class="dilemma-box">Миллиарды людей верят — и эта вера даёт им смысл. Но она же исторически служила инструментом войн и подавления.</div>
+    <p class="question-text">Что с этим делать в обществе?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q11']=this.value"></textarea>
+  </div>
+  <div class="question">
+    <div class="dilemma-box">Ты у власти. Реальной. Ты можешь изменить систему — но любое изменение встретит сопротивление, и ты не можешь знать наверняка что твоё решение правильное.</div>
+    <p class="question-text">Что делаешь с этой властью?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q12']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(4,3)">Назад</button>
+    <button class="btn-next" onclick="showResult()">Получить профиль</button>
+    <span class="step-num">5 / 5</span>
+  </div>
+</div>
+
+</div>
+
+<div class="result-wrap" id="reswrap">
+  <p class="result-label">Профиль · Сапиократия</p>
+  <h2 class="result-title">Твой профиль</h2>
+  <p class="result-sub">Не тип. Не ярлык. Форма.</p>
+  <div class="radar-wrap"><canvas id="radar" width="300" height="300"></canvas></div>
+  <div id="dims"></div>
+  <div class="result-note"><p id="resnote"></p></div>
+  <button class="restart" onclick="restart()">Пройти заново</button>
+</div>
+
+<script>
+var ans = {};
+
+function pick(q, val, el) {
+  var group = document.getElementById(q);
+  var opts = group.getElementsByClassName('option');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel');
+  el.classList.add('sel');
+  ans[q] = val;
+}
+
+function go(from, to) {
+  document.getElementById('b' + from).classList.remove('active');
+  document.getElementById('b' + to).classList.add('active');
+  var pct = (to / 5) * 100;
+  document.getElementById('pbar').style.width = pct + '%';
+  window.scrollTo(0, 0);
+}
+
+function showResult() {
+  document.getElementById('b4').classList.remove('active');
+  document.getElementById('testwrap').style.display = 'none';
+  document.getElementById('reswrap').style.display = 'block';
+  document.getElementById('pbar').style.width = '100%';
+  window.scrollTo(0, 0);
+  var s = calcScores();
+  drawRadar(s);
+  buildDims(s);
+  var avg = (s[0]+s[1]+s[2]+s[3]+s[4]) / 5;
+  var note = avg >= 8 ? 'Профиль показывает высокую степень внутренней целостности. Ты действуешь из принципов, а не из обстоятельств. Это редко.' :
+             avg >= 6 ? 'Профиль неравномерный — как и у большинства живых людей. Сильные стороны реальные, слабые — честные. Хорошая точка отправления.' :
+             'Профиль показывает потенциал в развитии. Сапиократия — не оценка, а направление. Важно что ты здесь.';
+  document.getElementById('resnote').textContent = note;
+}
+
+function calcScores() {
+  var e = ((ans.q1===4?10:ans.q1===2?7:ans.q1===1?3:5)+(ans.q2===4?10:ans.q2===3?8:ans.q2===2?5:2)+(ans.q3===4?10:ans.q3===3?9:ans.q3===2?4:3))/3;
+  var h = ((ans.q4===2?9:ans.q4===3?10:ans.q4===4?8:5)+(ans.q5===2?10:ans.q5===3?8:ans.q5===1?4:2)+(ans.q6&&ans.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
+  var p = ((ans.q7===4?10:ans.q7===2?8:ans.q7===3?7:4)+(ans.q8===4?10:ans.q8===3?7:ans.q8===2?6:3))/2;
+  var m = ((ans.q9&&ans.q9.length>30?9:ans.q9&&ans.q9.length>10?7:4)+(ans.q10&&ans.q10.length>20?9:ans.q10&&ans.q10.length>5?7:4))/2;
+  var so = ((ans.q11&&ans.q11.length>30?9:ans.q11&&ans.q11.length>10?7:4)+(ans.q12&&ans.q12.length>30?9:ans.q12&&ans.q12.length>10?7:4))/2;
+  return [Math.min(10,Math.round(e*10)/10),Math.min(10,Math.round(h*10)/10),Math.min(10,Math.round(p*10)/10),Math.min(10,Math.round(m*10)/10),Math.min(10,Math.round(so*10)/10)];
+}
+
+function drawRadar(sc) {
+  var c = document.getElementB
