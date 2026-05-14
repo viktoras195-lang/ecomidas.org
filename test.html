@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Тест Сапиократии · Ecomidas</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300; 0,400; 0,600; 1,300; 1,400&family=Jost:wght@300; 400; 500&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --les: #1A2A1E;
+--the: #1A2A1E;
   --mox: #2d4a32;
   --pap: #3d6b45;
   --sil: #c8d4c0;
   --tum: #e8ede4;
-  --izm: #4a7c52;
+--ism: #4a7c52;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -102,11 +102,11 @@ textarea:focus { border-color:#4a7c52; }
 <div class="hero">
   <p class="section-label">Диалог · Профиль</p>
   <h1>Тест Сапиократии</h1>
-  <p class="hero-sub">Не типология. Не ярлык. Профиль — как форма, уникальная для каждого. Пять измерений.</p>
+<p class="hero-sub">Not typology. Not a label. A profile is like a shape, unique to everyone. Five dimensions.</p>
 </div>
 
 <div class="intro">
-  <p>Отвечай как думаешь, а не как хочешь выглядеть. Нет правильных ответов — есть только твои.</p>
+<p>Answer as you think, not as you want to look. There are no right answers, there are only yours.</p>
 </div>
 
 <div class="progress-wrap">
@@ -119,9 +119,9 @@ textarea:focus { border-color:#4a7c52; }
   <div style="height:1.5rem"></div>
   <p class="block-number">Измерение 01 · Эмпатия</p>
   <h2 class="block-title">Восприятие других</h2>
-  <p class="block-desc">Как ты относишься к людям — близким и чужим.</p>
+<p class="block-desc">How do you treat people, near and foe.</p>
   <div class="question">
-    <p class="question-text">Коллега допустил серьёзную ошибку в проекте. Он сам об этом не знает. Что делаешь?</p>
+<p class="question-text">A colleague made a serious mistake in the project. He doesn't know about it himself. What are you doing?</p>
     <div class="options" id="q1">
       <div class="option" onclick="pick('q1',1,this)"><span class="opt-letter">А</span><span class="opt-text">Сообщаю руководству — это их задача</span></div>
       <div class="option" onclick="pick('q1',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Говорю коллеге напрямую, до того как дойдёт до других</span></div>
@@ -130,7 +130,7 @@ textarea:focus { border-color:#4a7c52; }
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
+<p class="question-text">A person with whom you have been in conflict for a long time comes to you for help.</p>
     <div class="options" id="q2">
       <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
       <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
@@ -139,7 +139,7 @@ textarea:focus { border-color:#4a7c52; }
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты наблюдаешь за незнакомым человеком — в очереди, в транспорте. Что происходит внутри?</p>
+<p class="question-text">You are watching a stranger — in a queue, in transport. What's going on inside?</p>
     <div class="options" id="q3">
       <div class="option" onclick="pick('q3',1,this)"><span class="opt-letter">А</span><span class="opt-text">Ничего особенного, просто фон</span></div>
       <div class="option" onclick="pick('q3',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Оцениваю — симпатичен или нет</span></div>
@@ -149,17 +149,17 @@ textarea:focus { border-color:#4a7c52; }
   </div>
   <div class="btn-row">
     <button class="btn-next" onclick="go(0,1)">Далее</button>
-    <span class="step-num">1 / 5</span>
+<span class="step-num">1/5</span>
   </div>
 </div>
 
 <div class="block" id="b1">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 02 · Горизонт</p>
-  <h2 class="block-title">Планирование и ответственность</h2>
-  <p class="block-desc">Как ты видишь время и берёшь на себя последствия.</p>
+<p class="block-number">Dimension 02 · Horizon</p>
+<h2 class="block-title">Planning and responsibility</h2>
+<p class="block-desc">How do you see the time and take the consequences.</p>
   <div class="question">
-    <p class="question-text">Ты начинаешь важное дело. Где твой взгляд — инстинктивно?</p>
+<p class="question-text">You're starting an important business. Where is your gaze – instinctively?</p>
     <div class="options" id="q4">
       <div class="option" onclick="pick('q4',1,this)"><span class="opt-letter">А</span><span class="opt-text">На ближайшем результате — неделя, месяц</span></div>
       <div class="option" onclick="pick('q4',2,this)"><span class="opt-letter">Б</span><span class="opt-text">На цели — путь открывается в движении</span></div>
@@ -168,7 +168,7 @@ textarea:focus { border-color:#4a7c52; }
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты принял решение которое оказалось ошибочным. Пострадали другие люди.</p>
+<p class="question-text">You've made a decision that turned out to be wrong. Other people were injured.</p>
     <div class="options" id="q5">
       <div class="option" onclick="pick('q5',1,this)"><span class="opt-letter">А</span><span class="opt-text">Объясняю — были объективные причины</span></div>
       <div class="option" onclick="pick('q5',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Признаю ошибку и пытаюсь исправить чего бы это ни стоило</span></div>
@@ -177,32 +177,32 @@ textarea:focus { border-color:#4a7c52; }
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты знаешь что твоя идея скорее всего не реализуется при твоей жизни. Это меняет что-то?</p>
+<p class="question-text">You know that your idea probably won't come to fruition in your lifetime. Does it change anything?</p>
     <textarea placeholder="Напиши своими словами..." oninput="ans['q6']=this.value"></textarea>
   </div>
   <div class="btn-row">
     <button class="btn-back" onclick="go(1,0)">Назад</button>
     <button class="btn-next" onclick="go(1,2)">Далее</button>
-    <span class="step-num">2 / 5</span>
+<span class="step-num">2/5</span>
   </div>
 </div>
 
 <div class="block" id="b2">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 03 · Профессионализм</p>
-  <h2 class="block-title">Стандарт и качество</h2>
-  <p class="block-desc">Откуда берётся твой стандарт работы.</p>
+<p class="block-number">Dimension 03 · Professionalism</p>
+<h2 class="block-title">Standard and quality</h2>
+<p class="block-desc">Where does your standard of work come from.</p>
   <div class="question">
-    <p class="question-text">Ты делаешь работу. Никто не проверяет, заказчик не заметит разницы. Как делаешь?</p>
+<p class="question-text">You're doing the work. No one checks, the customer will not notice the difference. How do you do it?</p>
     <div class="options" id="q7">
       <div class="option" onclick="pick('q7',1,this)"><span class="opt-letter">А</span><span class="opt-text">Достаточно хорошо — зачем тратить лишнее время</span></div>
       <div class="option" onclick="pick('q7',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Так же как всегда — внешний контроль не меняет</span></div>
       <div class="option" onclick="pick('q7',3,this)"><span class="opt-letter">В</span><span class="opt-text">Лучше обычного — раз никто не видит, делаю для себя</span></div>
-      <div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не могу сделать плохо — если не получится, вернусь и переделаю</span></div>
+<div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">Y</span><span class="opt-text">I can't do it badly – if it doesn't work out, I'll go back and redo it</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Тебя просят сделать что-то неправильно. Заказчик настаивает и платит.</p>
+<p class="question-text">You're being asked to do something wrong. The customer insists and pays.</p>
     <div class="options" id="q8">
       <div class="option" onclick="pick('q8',1,this)"><span class="opt-letter">А</span><span class="opt-text">Делаю как просят — клиент всегда прав</span></div>
       <div class="option" onclick="pick('q8',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Делаю как просят, но предупреждаю о последствиях</span></div>
@@ -213,51 +213,51 @@ textarea:focus { border-color:#4a7c52; }
   <div class="btn-row">
     <button class="btn-back" onclick="go(2,1)">Назад</button>
     <button class="btn-next" onclick="go(2,3)">Далее</button>
-    <span class="step-num">3 / 5</span>
+<span class="step-num">3/5</span>
   </div>
 </div>
 
 <div class="block" id="b3">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 04 · Моральный компас</p>
-  <h2 class="block-title">Дилеммы без правильных ответов</h2>
-  <p class="block-desc">Здесь нет вариантов. Только ситуация и твои слова.</p>
+<p class="block-number">Dimension 04 · Moral compass</p>
+<h2 class="block-title">Dilemmas without correct answers</h2>
+<p class="block-desc">There are no options here. Only the situation and your words.</p>
   <div class="question">
-    <div class="dilemma-box">Ты можешь спасти десятерых незнакомых людей — но ценой серьёзного вреда одному человеку, которого знаешь лично и который ни в чём не виноват.</div>
+<div class="dilemma-box">You can save ten strangers, but at the cost of serious harm to one person you know personally and who is innocent.</div>
     <p class="question-text">Что делаешь?</p>
     <textarea placeholder="Твой ответ..." oninput="ans['q9']=this.value"></textarea>
   </div>
   <div class="question">
-    <div class="dilemma-box">Ты знаешь правду о ситуации. Правда причинит боль человеку — но без неё он примет неверное решение с долгими последствиями.</div>
+<div class="dilemma-box">You know the truth about the situation. The truth will hurt a person — but without it, they will make a wrong decision with long-term consequences.</div>
     <p class="question-text">Говоришь?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q10']=this.value"></textarea>
+<textarea placeholder="Твой ответ..." oninput="ans['q10']=this. value"></textarea>
   </div>
   <div class="btn-row">
     <button class="btn-back" onclick="go(3,2)">Назад</button>
     <button class="btn-next" onclick="go(3,4)">Далее</button>
-    <span class="step-num">4 / 5</span>
+<span class="step-num">4/5</span>
   </div>
 </div>
 
 <div class="block" id="b4">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 05 · Социальное мышление</p>
-  <h2 class="block-title">Сложные системные вопросы</h2>
-  <p class="block-desc">Религия, власть, неравенство — без простых ответов.</p>
+<p class="block-number">Dimension 05 · Social Thinking</p>
+<h2 class="block-title">Complex system issues</h2>
+<p class="block-desc">Religion, power, inequality – no easy answers.</p>
   <div class="question">
-    <div class="dilemma-box">Миллиарды людей верят — и эта вера даёт им смысл. Но она же исторически служила инструментом войн и подавления.</div>
-    <p class="question-text">Что с этим делать в обществе?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q11']=this.value"></textarea>
+<div class="dilemma-box">Billions of people believe — and that belief gives them meaning. But it has also historically served as an instrument of war and suppression.</div>
+<p class="question-text">What to do about this in society?</p>
+<textarea placeholder="Твой ответ..." oninput="ans['q11']=this. value"></textarea>
   </div>
   <div class="question">
-    <div class="dilemma-box">Ты у власти. Реальной. Ты можешь изменить систему — но любое изменение встретит сопротивление, и ты не можешь знать наверняка что твоё решение правильное.</div>
-    <p class="question-text">Что делаешь с этой властью?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q12']=this.value"></textarea>
+<div class="dilemma-box">You're in power. Real. You can change the system, but any change will be resisted, and you can't know for sure that your decision is correct.</div>
+<p class="question-text">What are you doing with this power?</p>
+<textarea placeholder="Твой ответ..." oninput="ans['q12']=this. value"></textarea>
   </div>
   <div class="btn-row">
     <button class="btn-back" onclick="go(4,3)">Назад</button>
     <button class="btn-next" onclick="showResult()">Получить профиль</button>
-    <span class="step-num">5 / 5</span>
+<span class="step-num">5/5</span>
   </div>
 </div>
 
@@ -266,7 +266,7 @@ textarea:focus { border-color:#4a7c52; }
 <div class="result-wrap" id="reswrap">
   <p class="result-label">Профиль · Сапиократия</p>
   <h2 class="result-title">Твой профиль</h2>
-  <p class="result-sub">Не тип. Не ярлык. Форма.</p>
+<p class="result-sub">Not a type. Not a label. Form.</p>
   <div class="radar-wrap"><canvas id="radar" width="300" height="300"></canvas></div>
   <div id="dims"></div>
   <div class="result-note"><p id="resnote"></p></div>
@@ -274,26 +274,26 @@ textarea:focus { border-color:#4a7c52; }
 </div>
 
 <script>
-var ans = {};
+var years = {};
 
 function pick(q, val, el) {
   var group = document.getElementById(q);
-  var opts = group.getElementsByClassName('option');
+var opts = group.getElementsByClassName('option');
   for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel');
   el.classList.add('sel');
-  ans[q] = val;
+years[q] = val;
 }
 
 function go(from, to) {
   document.getElementById('b' + from).classList.remove('active');
   document.getElementById('b' + to).classList.add('active');
-  var pct = (to / 5) * 100;
+var pct = (to/5)*100;
   document.getElementById('pbar').style.width = pct + '%';
   window.scrollTo(0, 0);
 }
 
 function showResult() {
-  document.getElementById('b4').classList.remove('active');
+document.getElementById('b4'). classList.remove('active');
   document.getElementById('testwrap').style.display = 'none';
   document.getElementById('reswrap').style.display = 'block';
   document.getElementById('pbar').style.width = '100%';
@@ -302,18 +302,18 @@ function showResult() {
   drawRadar(s);
   buildDims(s);
   var avg = (s[0]+s[1]+s[2]+s[3]+s[4]) / 5;
-  var note = avg >= 8 ? 'Профиль показывает высокую степень внутренней целостности. Ты действуешь из принципов, а не из обстоятельств. Это редко.' :
-             avg >= 6 ? 'Профиль неравномерный — как и у большинства живых людей. Сильные стороны реальные, слабые — честные. Хорошая точка отправления.' :
-             'Профиль показывает потенциал в развитии. Сапиократия — не оценка, а направление. Важно что ты здесь.';
+var note = avg >= 8 ? 'The profile shows a high degree of internal integrity. You act from principles, not from circumstances. It's rare.' :
+avg >= 6 ? 'The profile is uneven, like most living people. The strengths are real, the weaknesses are honest. Good starting point.' :
+'The profile shows potential in development. Sapiocracy is not an assessment, but a direction. The important thing is that you are here.';
   document.getElementById('resnote').textContent = note;
 }
 
 function calcScores() {
-  var e = ((ans.q1===4?10:ans.q1===2?7:ans.q1===1?3:5)+(ans.q2===4?10:ans.q2===3?8:ans.q2===2?5:2)+(ans.q3===4?10:ans.q3===3?9:ans.q3===2?4:3))/3;
-  var h = ((ans.q4===2?9:ans.q4===3?10:ans.q4===4?8:5)+(ans.q5===2?10:ans.q5===3?8:ans.q5===1?4:2)+(ans.q6&&ans.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
-  var p = ((ans.q7===4?10:ans.q7===2?8:ans.q7===3?7:4)+(ans.q8===4?10:ans.q8===3?7:ans.q8===2?6:3))/2;
-  var m = ((ans.q9&&ans.q9.length>30?9:ans.q9&&ans.q9.length>10?7:4)+(ans.q10&&ans.q10.length>20?9:ans.q10&&ans.q10.length>5?7:4))/2;
-  var so = ((ans.q11&&ans.q11.length>30?9:ans.q11&&ans.q11.length>10?7:4)+(ans.q12&&ans.q12.length>30?9:ans.q12&&ans.q12.length>10?7:4))/2;
+var e = ((years.q1===4?10:years.q1===2?7:years.q1===1?3:5)+(years.q2===4?10:years.q2===3?8:years.q2===2?5:2)+(years.q3===4?10:years.q3===3?9:years.q3===2?4:3))/3;
+var h = ((years.q4===2?9:years.q4===3?10:years.q4===4?8:5)+(years.q5===2?10:years.q5===3?8:years.q5===1?4:2)+(years.q6&&years.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
+var p = ((years.q7===4?10:years.q7===2?8:years.q7===3?7:4)+(years.q8===4?10:years.q8===3?7:years.q8===2?6:3))/2;
+var m = ((years.q9&&years.q9.length>30?9:years.q9&&years.q9.length>10?7:4)+(years.q10&&years.q10.length>20?9:years.q10&&years.q10.length>5?7:4))/2;
+var so = ((years.q11&&years.q11.length>30?9:years.q11&&years.q11.length>10? 7:4)+(years.q12&&years.q12.length>30?9:years.q12&&years.q12.length>10?7:4))/2;
   return [Math.min(10,Math.round(e*10)/10),Math.min(10,Math.round(h*10)/10),Math.min(10,Math.round(p*10)/10),Math.min(10,Math.round(m*10)/10),Math.min(10,Math.round(so*10)/10)];
 }
 
