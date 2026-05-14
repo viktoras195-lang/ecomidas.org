@@ -1,463 +1,95 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Тест Сапиократии · Ecomidas</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300; 0,400; 0,600; 1,300; 1,400&family=Jost:wght@300; 400; 500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
---forest: #1A2A1E;
---moss: #2d4a32;
---fern: #3d6b45;
---silver: #c8d4c0;
---fog: #e8ede4;
---emerald: #4a7c52;
---white: #f5f5f0;
-  }
+:root {
+  --les: #1A2A1E;
+  --mox: #2d4a32;
+  --pap: #3d6b45;
+  --sil: #c8d4c0;
+  --tum: #e8ede4;
+  --izm: #4a7c52;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:#1A2A1E; color:#e8ede4; font-family:'Jost',sans-serif; font-weight:300; min-height:100vh; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; background:rgba(26,42,30,0.9); border-bottom:1px solid rgba(74,124,82,0.2); }
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#c8d4c0; text-decoration:none; }
+.nav-back { font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; color:#c8d4c0; text-decoration:none; opacity:0.7; }
 
-  html { scroll-behavior: smooth; }
+.hero { padding:7rem 2rem 3rem; border-bottom:1px solid rgba(74,124,82,0.2); }
+.section-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:1rem; }
+h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,6vw,4.5rem); font-weight:300; color:#e8ede4; margin-bottom:1rem; line-height:1.1; }
+.hero-sub { font-size:.95rem; color:#c8d4c0; max-width:560px; line-height:1.7; opacity:0.85; }
 
-  body {
-    background-color: var(--лес);
-color: var(--fog);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-  }
+.intro { padding:3rem 2rem; border-bottom:1px solid rgba(74,124,82,0.2); }
+.intro p { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:#c8d4c0; line-height:1.8; max-width:640px; }
 
-none {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-padding: 1.2 3 brake;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(26,42,30,0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(74,124,82,0.2);
-  }
+.progress-wrap { padding:2rem 2rem 0; }
+.progress-bar { height:2px; background:rgba(74,124,82,0.2); border-radius:1px; overflow:hidden; }
+.progress-fill { height:100%; background:#4a7c52; transition:width .5s; border-radius:1px; width:0%; }
 
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.05em;
-    color: var(--серебро);
-    text-decoration: none;
-  }
+.test-wrap { padding:2rem; max-width:780px; }
 
-  .nav-back {
-    font-size: .78rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--серебро);
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity .3s;
-  }
-  .nav-back:hover { opacity: 1; }
+.block { display:none; }
+.block.active { display:block; }
 
-  /* HERO */
-  .hero {
-    min-height: 45vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 8rem 3rem 4rem;
-    background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(61,107,69,.18) 0%, transparent 70%);
-    border-bottom: 1px solid rgba(74,124,82,.2);
-  }
+.block-number { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; }
+.block-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:#e8ede4; margin-bottom:.6rem; }
+.block-desc { font-size:.85rem; color:#c8d4c0; opacity:.7; line-height:1.6; margin-bottom:2rem; }
 
-  .section-label {
-    font-size: .72rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--изумруд);
-    margin-bottom: 1rem;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-  }
+.question { margin-bottom:2rem; border-left:2px solid rgba(74,124,82,0.4); padding-left:1.2rem; }
+.question-text { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; line-height:1.6; margin-bottom:1rem; }
 
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 300;
-    line-height: 1.1;
-color: var(--fog);
-    margin-bottom: 1.5rem;
-  }
+.options { display:flex; flex-direction:column; gap:.5rem; }
+.option { padding:.85rem 1rem; border:1px solid rgba(74,124,82,0.25); border-radius:4px; cursor:pointer; display:flex; gap:.8rem; align-items:flex-start; background:transparent; transition:all .2s; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.option.sel { border-color:#4a7c52; background:rgba(74,124,82,0.15); }
+.opt-letter { font-size:.72rem; color:#4a7c52; font-weight:500; min-width:1rem; padding-top:.1rem; }
+.opt-text { font-size:.9rem; color:#c8d4c0; line-height:1.5; }
 
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--серебро);
-    max-width: 600px;
-    line-height: 1.7;
-    opacity: 0.85;
-  }
+.dilemma-box { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.7; padding:1rem 1.2rem; border-left:2px solid #4a7c52; background:rgba(74,124,82,0.06); margin-bottom:1rem; border-radius:0 4px 4px 0; }
 
-  /* INTRO */
-  .intro {
-padding: 4brake 3brake;
-    max-width: 760px;
-    border-bottom: 1px solid rgba(74,124,82,.2);
-  }
+textarea { width:100%; min-height:110px; background:rgba(45,74,50,0.2); border:1px solid rgba(74,124,82,0.3); border-radius:4px; color:#e8ede4; font-family:'Cormorant Garamond',serif; font-size:1.05rem; padding:.9rem 1rem; resize:vertical; outline:none; line-height:1.6; }
+textarea::placeholder { color:rgba(200,212,192,0.3); font-style:italic; }
+textarea:focus { border-color:#4a7c52; }
 
-  .intro p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--серебро);
-    font-style: italic;
-  }
+.btn-row { display:flex; gap:1rem; margin-top:2rem; align-items:center; flex-wrap:wrap; }
+.btn-next { padding:.75rem 2rem; background:transparent; border:1px solid #4a7c52; color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.btn-back { padding:.75rem 1.5rem; background:transparent; border:1px solid rgba(74,124,82,0.3); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.step-num { font-size:.75rem; color:#c8d4c0; opacity:.45; margin-left:auto; }
 
-  /* TEST CONTAINER */
-  .test-container {
-    padding: 3rem;
-    max-width: 800px;
-  }
+.result-wrap { display:none; padding:2rem; max-width:780px; }
+.result-wrap.active { display:block; }
+.result-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; margin-top:1rem; }
+.result-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:#e8ede4; margin-bottom:.3rem; }
+.result-sub { font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:#4a7c52; margin-bottom:2rem; }
 
-  /* BLOCK */
-  .block {
-    display: none;
-    animation: fadeIn .5s ease;
-  }
-  .block.active { display: block; }
+.radar-wrap { display:flex; justify-content:center; margin:1.5rem 0 2.5rem; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.dim { margin-bottom:1.8rem; padding-bottom:1.8rem; border-bottom:1px solid rgba(74,124,82,0.15); }
+.dim:last-child { border-bottom:none; }
+.dim-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.4rem; }
+.dim-name { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; }
+.dim-score { font-size:.78rem; color:#4a7c52; }
+.dim-bar { height:3px; background:rgba(74,124,82,0.2); border-radius:2px; overflow:hidden; margin-bottom:.7rem; }
+.dim-fill { height:100%; background:linear-gradient(90deg,#3d6b45,#4a7c52); border-radius:2px; transition:width 1s ease .2s; width:0%; }
+.dim-text { font-size:.87rem; color:#c8d4c0; line-height:1.7; opacity:.85; }
 
-  .block-header {
-    margin-bottom: 2.5rem;
-  }
+.result-note { margin-top:2.5rem; padding:1.2rem 1.5rem; border:1px solid rgba(74,124,82,0.3); border-radius:4px; background:rgba(74,124,82,0.05); }
+.result-note p { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.8; }
 
-  .block-number {
-    font-size: .72rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--изумруд);
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    margin-bottom: .6rem;
-  }
+.restart { margin-top:2rem; padding:.75rem 2rem; background:transparent; border:1px solid rgba(74,124,82,0.35); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; display:inline-block; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 
-  .block-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-color: var(--fog);
-    margin-bottom: .8rem;
-  }
-
-  .block-desc {
-    font-size: .85rem;
-    color: var(--серебро);
-    opacity: .7;
-    line-height: 1.6;
-  }
-
-  /* QUESTION */
-  .question {
-    margin-bottom: 2.5rem;
-    border-left: 2px solid rgba(74,124,82,.4);
-    padding-left: 1.5rem;
-  }
-
-  .question-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-color: var(--fog);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-  }
-
-  /* OPTIONS */
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: .6rem;
-  }
-
-  .option {
-    display: flex;
-    align-items: flex-start;
-    gap: .8rem;
-padding: .9brake 1.2rem;
-    border: 1px solid rgba(74,124,82,.25);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all .25s;
-    background: transparent;
-  }
-
-  .option:hover {
-    border-color: var(--изумруд);
-    background: rgba(74,124,82,.08);
-  }
-
-  .option.selected {
-    border-color: var(--изумруд);
-    background: rgba(74,124,82,.15);
-  }
-
-  .option-letter {
-    font-size: .72rem;
-    letter-spacing: .1em;
-    color: var(--изумруд);
-    font-family: 'Jost', sans-serif;
-    font-weight: 500;
-    padding-top: .1rem;
-    min-width: 1rem;
-  }
-
-  .option-text {
-    font-size: .92rem;
-    color: var(--серебро);
-    line-height: 1.5;
-  }
-
-  /* OPEN QUESTION */
-  .open-question textarea {
-    width: 100%;
-    min-height: 120px;
-    background: rgba(45,74,50,.2);
-    border: 1px solid rgba(74,124,82,.3);
-    border-radius: 4px;
-color: var(--fog);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-padding: 1brake 1.2rem;
-    resize: vertical;
-    outline: none;
-    transition: border-color .25s;
-    line-height: 1.6;
-  }
-
-  .open-question textarea::placeholder {
-    color: rgba(200,212,192,.3);
-    font-style: italic;
-  }
-
-  .open-question textarea:focus {
-    border-color: var(--изумруд);
-  }
-
-  /* DILEMMA */
-  .dilemma-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--серебро);
-    line-height: 1.7;
-padding: 1.2 brake 1.5 brake;
-    border-left: 2px solid var(--изумруд);
-    background: rgba(74,124,82,.06);
-    margin-bottom: 1.2rem;
-    border-radius: 0 4px 4px 0;
-  }
-
-  /* PROGRESS */
-  .progress-bar {
-    height: 2px;
-    background: rgba(74,124,82,.2);
-    margin-bottom: 3rem;
-    border-radius: 1px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--изумруд);
-    transition: width .5s ease;
-    border-radius: 1px;
-  }
-
-  /* NAVIGATION BUTTONS */
-  .btn-row {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2.5rem;
-    align-items: center;
-  }
-
-  .btn-next {
-    padding: .8rem 2.5rem;
-    background: transparent;
-Border: 1PX Solid Load(--изумруд);
-    color: var(--серебро);
-    font-family: 'Jost', sans-serif;
-    font-size: .82rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .25s;
-    border-radius: 2px;
-  }
-
-  .btn-next:hover {
-    background: var(--изумруд);
-    color: var(--лес);
-  }
-
-  .btn-next:disabled {
-    opacity: .3;
-    cursor: not-allowed;
-  }
-
-  .btn-back {
-    padding: .8rem 1.5rem;
-    background: transparent;
-    border: 1px solid rgba(74,124,82,.3);
-    color: var(--серебро);
-    font-family: 'Jost', sans-serif;
-    font-size: .82rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .25s;
-    border-radius: 2px;
-    opacity: .6;
-  }
-
-  .btn-back:hover { opacity: 1; }
-
-  .step-indicator {
-    margin-left: auto;
-    font-size: .75rem;
-    color: var(--серебро);
-    opacity: .5;
-    letter-spacing: .1em;
-  }
-
-  /* RESULT */
-  .result-container {
-    display: none;
-    padding: 3rem;
-    max-width: 800px;
-    animation: fadeIn .8s ease;
-  }
-
-  .result-container.active { display: block; }
-
-  .result-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-color: var(--fog);
-    margin-bottom: .5rem;
-    margin-top: 1rem;
-  }
-
-  .result-subtitle {
-    font-size: .82rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--изумруд);
-    margin-bottom: 3rem;
-  }
-
-  /* RADAR */
-  .radar-wrap {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0 3rem;
-  }
-
-  .dimension {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(74,124,82,.15);
-  }
-
-  .dimension:last-child { border-bottom: none; }
-
-  .dim-header {
-    display: flex;
-    justify-content: space-between;
-align items: baseline;
-    margin-bottom: .5rem;
-  }
-
-  .dim-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-color: var(--fog);
-  }
-
-  .dim-score {
-    font-size: .8rem;
-    color: var(--изумруд);
-    letter-spacing: .1em;
-  }
-
-  .dim-bar {
-    height: 3px;
-    background: rgba(74,124,82,.2);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: .8rem;
-  }
-
-  .dim-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--папоротник), var(--изумруд));
-    border-radius: 2px;
-    transition: width 1s ease .3s;
-  }
-
-  .dim-text {
-    font-size: .88rem;
-    color: var(--серебро);
-    line-height: 1.7;
-    opacity: .85;
-  }
-
-  .result-note {
-    margin-top: 3rem;
-padding: 1.5 brake 2brake;
-    border: 1px solid rgba(74,124,82,.3);
-    border-radius: 4px;
-    background: rgba(74,124,82,.05);
-  }
-
-  .result-note p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--серебро);
-    line-height: 1.8;
-  }
-
-  .restart-btn {
-    margin-top: 2.5rem;
-    display: inline-block;
-    padding: .8rem 2.5rem;
-    border: 1px solid rgba(74,124,82,.4);
-    color: var(--серебро);
-    font-family: 'Jost', sans-serif;
-    font-size: .78rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    background: transparent;
-    border-radius: 2px;
-    transition: all .25s;
-    opacity: .6;
-  }
-  .restart-btn:hover { opacity: 1; }
-
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.5rem; }
-    .hero { padding: 7rem 1.5rem 3rem; }
-    .intro, .test-container, .result-container { padding: 2rem 1.5rem; }
-  }
+@media(max-width:600px) {
+  nav { padding:1rem 1.2rem; }
+  .hero { padding:6rem 1.2rem 2.5rem; }
+  .intro, .test-wrap, .result-wrap, .progress-wrap { padding-left:1.2rem; padding-right:1.2rem; }
+}
 </style>
 </head>
 <body>
@@ -470,179 +102,220 @@ padding: 1.5 brake 2brake;
 <div class="hero">
   <p class="section-label">Диалог · Профиль</p>
   <h1>Тест Сапиократии</h1>
-<p class="hero-sub">Not typology. Not a label. A profile is like a shape, unique to everyone. Five dimensions, fifteen questions.</p>
+  <p class="hero-sub">Не типология. Не ярлык. Профиль — как форма, уникальная для каждого. Пять измерений.</p>
 </div>
 
 <div class="intro">
-<p>Answer as you think, not as you want to look. There are no right answers, there are only yours.</p>
+  <p>Отвечай как думаешь, а не как хочешь выглядеть. Нет правильных ответов — есть только твои.</p>
 </div>
 
-<!-- TEST -->
-<div class="test-container" id="testContainer">
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
+</div>
 
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill" style="width:0%"></div>
-  </div>
+<div class="test-wrap" id="testwrap">
 
-<!-- UNIT 1: EMPATHY -->
-  <div class="block active" id="block-0">
-    <div class="block-header">
-      <p class="block-number">Измерение 01 · Эмпатия</p>
-      <h2 class="block-title">Восприятие других</h2>
-<p class="block-desc">How do you treat people, near and foe.</p>
-    </div>
-
-    <div class="question">
-<p class="question-text">A colleague made a serious mistake in the project. He doesn't know about it himself. What are you doing?</p>
-      <div class="options" data-q="q1">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Сообщаю руководству — это их задача</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Говорю коллеге напрямую, до того как дойдёт до других</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Жду — может само разрешится</span></div>
-        <div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Помогаю исправить ошибку, не поднимая шума</span></div>
-      </div>
-    </div>
-
-    <div class="question">
-<p class="question-text">A person with whom you have been in conflict for a long time comes to you for help. He really needs her.</p>
-      <div class="options" data-q="q2">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Отказываю — он не заслужил</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Помогаю, но напоминаю о конфликте</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Помогаю молча, не касаясь прошлого</span></div>
-        <div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Помогаю, но это не значит что я его простил или пустил обратно</span></div>
-      </div>
-    </div>
-
-    <div class="question">
-<p class="question-text">You are watching a stranger — in a queue, in transport. What's going on inside?</p>
-      <div class="options" data-q="q3">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Ничего особенного, просто фон</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Оцениваю — симпатичен или нет</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Думаю какая у него жизнь, история, мир</span></div>
-        <div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Фантазирую о нём — потом забываю</span></div>
-      </div>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-next" id="btn-next-0">Далее</button>
-      <span class="step-indicator">1 / 5</span>
+<div class="block active" id="b0">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 01 · Эмпатия</p>
+  <h2 class="block-title">Восприятие других</h2>
+  <p class="block-desc">Как ты относишься к людям — близким и чужим.</p>
+  <div class="question">
+    <p class="question-text">Коллега допустил серьёзную ошибку в проекте. Он сам об этом не знает. Что делаешь?</p>
+    <div class="options" id="q1">
+      <div class="option" onclick="pick('q1',1,this)"><span class="opt-letter">А</span><span class="opt-text">Сообщаю руководству — это их задача</span></div>
+      <div class="option" onclick="pick('q1',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Говорю коллеге напрямую, до того как дойдёт до других</span></div>
+      <div class="option" onclick="pick('q1',3,this)"><span class="opt-letter">В</span><span class="opt-text">Жду — может само разрешится</span></div>
+      <div class="option" onclick="pick('q1',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю исправить ошибку, не поднимая шума</span></div>
     </div>
   </div>
-
-<!-- BLOCK 2: HORIZON -->
-  <div class="block" id="block-1">
-    <div class="block-header">
-<p class="block-number">Dimension 02 · Horizon</p>
-<h2 class="block-title">Planning and responsibility</h2>
-<p class="block-desc">How do you see the time and take the consequences.</p>
-    </div>
-
-    <div class="question">
-<p class="question-text">You're starting an important business. Where is your gaze – instinctively?</p>
-      <div class="options" data-q="q4">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">На ближайшем результате — неделя, месяц</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">На цели — путь открывается в движении</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">На том, что останется после меня</span></div>
-<div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Не вижу — просто делаю первый шаг</span></div>
-      </div>
-    </div>
-
-    <div class="question">
-<p class="question-text">You've made a decision that turned out to be wrong. Other people were injured.</p>
-      <div class="options" data-q="q5">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Объясняю почему так вышло — были объективные причины</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Признаю ошибку и пытаюсь исправить чего бы это ни стоило</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Молча исправляю — без лишних слов</span></div>
-<div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Жду пока само забудется</span></div>
-      </div>
-    </div>
-
-    <div class="question open-question">
-<p class="question-text">You know that your idea probably won't come to fruition in your lifetime. Does it change something in the way you feel about her?</p>
-      <textarea placeholder="Напиши своими словами..." data-q="q6"></textarea>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-1">Назад</button>
-      <button class="btn-next" id="btn-next-1">Далее</button>
-      <span class="step-indicator">2 / 5</span>
+  <div class="question">
+    <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
+    <div class="options" id="q2">
+      <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
+      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
+      <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">В</span><span class="opt-text">Помогаю молча, не касаясь прошлого</span></div>
+      <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю — но это не значит что простил или пустил обратно</span></div>
     </div>
   </div>
-
-<!-- UNIT 3: PROFESSIONALISM -->
-  <div class="block" id="block-2">
-    <div class="block-header">
-<p class="block-number">Dimension 03 · Professionalism</p>
-<h2 class="block-title">Standard and quality</h2>
-<p class="block-desc">Where does your standard of work come from.</p>
-    </div>
-
-    <div class="question">
-<p class="question-text">You're doing the work. No one checks, the customer will not notice the difference. How do you do it?</p>
-      <div class="options" data-q="q7">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Достаточно хорошо — зачем тратить лишнее время</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Так же как всегда — внешний контроль не меняет</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Лучше обычного — раз никто не видит, делаю для себя</span></div>
-<div class="option" data-val="4"><span class="option-letter">G</span><span class="option-text">I can't do it badly — if it doesn't work out, I'll go back and redo it</span></div>
-      </div>
-    </div>
-
-    <div class="question">
-<p class="question-text">You're being asked to do something your way, but it's wrong. The customer insists and pays.</p>
-      <div class="options" data-q="q8">
-        <div class="option" data-val="1"><span class="option-letter">А</span><span class="option-text">Делаю как просят — клиент всегда прав</span></div>
-        <div class="option" data-val="2"><span class="option-letter">Б</span><span class="option-text">Делаю как просят, но предупреждаю о последствиях</span></div>
-        <div class="option" data-val="3"><span class="option-letter">В</span><span class="option-text">Отказываюсь от заказа</span></div>
-        <div class="option" data-val="4"><span class="option-letter">Г</span><span class="option-text">Делаю правильно — даже в одиночку, даже под давлением</span></div>
-      </div>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-2">Назад</button>
-      <button class="btn-next" id="btn-next-2">Далее</button>
-      <span class="step-indicator">3 / 5</span>
+  <div class="question">
+    <p class="question-text">Ты наблюдаешь за незнакомым человеком — в очереди, в транспорте. Что происходит внутри?</p>
+    <div class="options" id="q3">
+      <div class="option" onclick="pick('q3',1,this)"><span class="opt-letter">А</span><span class="opt-text">Ничего особенного, просто фон</span></div>
+      <div class="option" onclick="pick('q3',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Оцениваю — симпатичен или нет</span></div>
+      <div class="option" onclick="pick('q3',3,this)"><span class="opt-letter">В</span><span class="opt-text">Думаю какая у него жизнь, история, мир</span></div>
+      <div class="option" onclick="pick('q3',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Фантазирую о нём — потом забываю</span></div>
     </div>
   </div>
+  <div class="btn-row">
+    <button class="btn-next" onclick="go(0,1)">Далее</button>
+    <span class="step-num">1 / 5</span>
+  </div>
+</div>
 
-<!-- UNIT 4: MORAL DILEMMAS -->
-  <div class="block" id="block-3">
-    <div class="block-header">
-<p class="block-number">Dimension 04 · Moral compass</p>
-<h2 class="block-title">Dilemmas without correct answers</h2>
-<p class="block-desc">There are no options here. Only the situation and your words.</p>
-    </div>
-
-    <div class="question open-question">
-<div class="dilemma-text">You can save ten strangers—but at the cost of serious harm to one person you know personally and who is innocent.</div>
-      <p class="question-text">Что делаешь?</p>
-      <textarea placeholder="Твой ответ..." data-q="q9"></textarea>
-    </div>
-
-    <div class="question open-question">
-<div class="dilemma-text">You know the truth about the situation. The truth will hurt a person — but without it, they will make a wrong decision with long-term consequences.</div>
-      <p class="question-text">Говоришь?</p>
-      <textarea placeholder="Твой ответ..." data-q="q10"></textarea>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-3">Назад</button>
-      <button class="btn-next" id="btn-next-3">Далее</button>
-      <span class="step-indicator">4 / 5</span>
+<div class="block" id="b1">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 02 · Горизонт</p>
+  <h2 class="block-title">Планирование и ответственность</h2>
+  <p class="block-desc">Как ты видишь время и берёшь на себя последствия.</p>
+  <div class="question">
+    <p class="question-text">Ты начинаешь важное дело. Где твой взгляд — инстинктивно?</p>
+    <div class="options" id="q4">
+      <div class="option" onclick="pick('q4',1,this)"><span class="opt-letter">А</span><span class="opt-text">На ближайшем результате — неделя, месяц</span></div>
+      <div class="option" onclick="pick('q4',2,this)"><span class="opt-letter">Б</span><span class="opt-text">На цели — путь открывается в движении</span></div>
+      <div class="option" onclick="pick('q4',3,this)"><span class="opt-letter">В</span><span class="opt-text">На том что останется после меня</span></div>
+      <div class="option" onclick="pick('q4',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не вижу — просто делаю первый шаг</span></div>
     </div>
   </div>
-
-<!-- UNIT 5: SOCIAL ISSUES -->
-  <div class="block" id="block-4">
-    <div class="block-header">
-<p class="block-number">Dimension 05 · Social Thinking</p>
-<h2 class="block-title">Complex system issues</h2>
-<p class="block-desc">Religion, power, inequality – no easy answers.</p>
+  <div class="question">
+    <p class="question-text">Ты принял решение которое оказалось ошибочным. Пострадали другие люди.</p>
+    <div class="options" id="q5">
+      <div class="option" onclick="pick('q5',1,this)"><span class="opt-letter">А</span><span class="opt-text">Объясняю — были объективные причины</span></div>
+      <div class="option" onclick="pick('q5',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Признаю ошибку и пытаюсь исправить чего бы это ни стоило</span></div>
+      <div class="option" onclick="pick('q5',3,this)"><span class="opt-letter">В</span><span class="opt-text">Молча исправляю — без лишних слов</span></div>
+      <div class="option" onclick="pick('q5',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Жду пока само забудется</span></div>
     </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Ты знаешь что твоя идея скорее всего не реализуется при твоей жизни. Это меняет что-то?</p>
+    <textarea placeholder="Напиши своими словами..." oninput="ans['q6']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(1,0)">Назад</button>
+    <button class="btn-next" onclick="go(1,2)">Далее</button>
+    <span class="step-num">2 / 5</span>
+  </div>
+</div>
 
-    <div class="question open-question">
-<div class="dilemma-text">Billions of people believe — and that belief gives them meaning. But it has also historically served as an instrument of war and suppression.</div>
-<p class="question-text">What to do about this in society?</p>
-      <textarea placeholder="Твой ответ..." data-q="q11"></textarea>
+<div class="block" id="b2">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 03 · Профессионализм</p>
+  <h2 class="block-title">Стандарт и качество</h2>
+  <p class="block-desc">Откуда берётся твой стандарт работы.</p>
+  <div class="question">
+    <p class="question-text">Ты делаешь работу. Никто не проверяет, заказчик не заметит разницы. Как делаешь?</p>
+    <div class="options" id="q7">
+      <div class="option" onclick="pick('q7',1,this)"><span class="opt-letter">А</span><span class="opt-text">Достаточно хорошо — зачем тратить лишнее время</span></div>
+      <div class="option" onclick="pick('q7',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Так же как всегда — внешний контроль не меняет</span></div>
+      <div class="option" onclick="pick('q7',3,this)"><span class="opt-letter">В</span><span class="opt-text">Лучше обычного — раз никто не видит, делаю для себя</span></div>
+      <div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не могу сделать плохо — если не получится, вернусь и переделаю</span></div>
     </div>
+  </div>
+  <div class="question">
+    <p class="question-text">Тебя просят сделать что-то неправильно. Заказчик настаивает и платит.</p>
+    <div class="options" id="q8">
+      <div class="option" onclick="pick('q8',1,this)"><span class="opt-letter">А</span><span class="opt-text">Делаю как просят — клиент всегда прав</span></div>
+      <div class="option" onclick="pick('q8',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Делаю как просят, но предупреждаю о последствиях</span></div>
+      <div class="option" onclick="pick('q8',3,this)"><span class="opt-letter">В</span><span class="opt-text">Отказываюсь от заказа</span></div>
+      <div class="option" onclick="pick('q8',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Делаю правильно — даже в одиночку, даже под давлением</span></div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(2,1)">Назад</button>
+    <button class="btn-next" onclick="go(2,3)">Далее</button>
+    <span class="step-num">3 / 5</span>
+  </div>
+</div>
 
-    <div class="question open-question">
-<div class="dilemma-text">You are in power. Real. You can change the system, but any change will be resisted, and you will not
+<div class="block" id="b3">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 04 · Моральный компас</p>
+  <h2 class="block-title">Дилеммы без правильных ответов</h2>
+  <p class="block-desc">Здесь нет вариантов. Только ситуация и твои слова.</p>
+  <div class="question">
+    <div class="dilemma-box">Ты можешь спасти десятерых незнакомых людей — но ценой серьёзного вреда одному человеку, которого знаешь лично и который ни в чём не виноват.</div>
+    <p class="question-text">Что делаешь?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q9']=this.value"></textarea>
+  </div>
+  <div class="question">
+    <div class="dilemma-box">Ты знаешь правду о ситуации. Правда причинит боль человеку — но без неё он примет неверное решение с долгими последствиями.</div>
+    <p class="question-text">Говоришь?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q10']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(3,2)">Назад</button>
+    <button class="btn-next" onclick="go(3,4)">Далее</button>
+    <span class="step-num">4 / 5</span>
+  </div>
+</div>
+
+<div class="block" id="b4">
+  <div style="height:1.5rem"></div>
+  <p class="block-number">Измерение 05 · Социальное мышление</p>
+  <h2 class="block-title">Сложные системные вопросы</h2>
+  <p class="block-desc">Религия, власть, неравенство — без простых ответов.</p>
+  <div class="question">
+    <div class="dilemma-box">Миллиарды людей верят — и эта вера даёт им смысл. Но она же исторически служила инструментом войн и подавления.</div>
+    <p class="question-text">Что с этим делать в обществе?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q11']=this.value"></textarea>
+  </div>
+  <div class="question">
+    <div class="dilemma-box">Ты у власти. Реальной. Ты можешь изменить систему — но любое изменение встретит сопротивление, и ты не можешь знать наверняка что твоё решение правильное.</div>
+    <p class="question-text">Что делаешь с этой властью?</p>
+    <textarea placeholder="Твой ответ..." oninput="ans['q12']=this.value"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn-back" onclick="go(4,3)">Назад</button>
+    <button class="btn-next" onclick="showResult()">Получить профиль</button>
+    <span class="step-num">5 / 5</span>
+  </div>
+</div>
+
+</div>
+
+<div class="result-wrap" id="reswrap">
+  <p class="result-label">Профиль · Сапиократия</p>
+  <h2 class="result-title">Твой профиль</h2>
+  <p class="result-sub">Не тип. Не ярлык. Форма.</p>
+  <div class="radar-wrap"><canvas id="radar" width="300" height="300"></canvas></div>
+  <div id="dims"></div>
+  <div class="result-note"><p id="resnote"></p></div>
+  <button class="restart" onclick="restart()">Пройти заново</button>
+</div>
+
+<script>
+var ans = {};
+
+function pick(q, val, el) {
+  var group = document.getElementById(q);
+  var opts = group.getElementsByClassName('option');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel');
+  el.classList.add('sel');
+  ans[q] = val;
+}
+
+function go(from, to) {
+  document.getElementById('b' + from).classList.remove('active');
+  document.getElementById('b' + to).classList.add('active');
+  var pct = (to / 5) * 100;
+  document.getElementById('pbar').style.width = pct + '%';
+  window.scrollTo(0, 0);
+}
+
+function showResult() {
+  document.getElementById('b4').classList.remove('active');
+  document.getElementById('testwrap').style.display = 'none';
+  document.getElementById('reswrap').style.display = 'block';
+  document.getElementById('pbar').style.width = '100%';
+  window.scrollTo(0, 0);
+  var s = calcScores();
+  drawRadar(s);
+  buildDims(s);
+  var avg = (s[0]+s[1]+s[2]+s[3]+s[4]) / 5;
+  var note = avg >= 8 ? 'Профиль показывает высокую степень внутренней целостности. Ты действуешь из принципов, а не из обстоятельств. Это редко.' :
+             avg >= 6 ? 'Профиль неравномерный — как и у большинства живых людей. Сильные стороны реальные, слабые — честные. Хорошая точка отправления.' :
+             'Профиль показывает потенциал в развитии. Сапиократия — не оценка, а направление. Важно что ты здесь.';
+  document.getElementById('resnote').textContent = note;
+}
+
+function calcScores() {
+  var e = ((ans.q1===4?10:ans.q1===2?7:ans.q1===1?3:5)+(ans.q2===4?10:ans.q2===3?8:ans.q2===2?5:2)+(ans.q3===4?10:ans.q3===3?9:ans.q3===2?4:3))/3;
+  var h = ((ans.q4===2?9:ans.q4===3?10:ans.q4===4?8:5)+(ans.q5===2?10:ans.q5===3?8:ans.q5===1?4:2)+(ans.q6&&ans.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
+  var p = ((ans.q7===4?10:ans.q7===2?8:ans.q7===3?7:4)+(ans.q8===4?10:ans.q8===3?7:ans.q8===2?6:3))/2;
+  var m = ((ans.q9&&ans.q9.length>30?9:ans.q9&&ans.q9.length>10?7:4)+(ans.q10&&ans.q10.length>20?9:ans.q10&&ans.q10.length>5?7:4))/2;
+  var so = ((ans.q11&&ans.q11.length>30?9:ans.q11&&ans.q11.length>10?7:4)+(ans.q12&&ans.q12.length>30?9:ans.q12&&ans.q12.length>10?7:4))/2;
+  return [Math.min(10,Math.round(e*10)/10),Math.min(10,Math.round(h*10)/10),Math.min(10,Math.round(p*10)/10),Math.min(10,Math.round(m*10)/10),Math.min(10,Math.round(so*10)/10)];
+}
+
+function drawRadar(sc) {
+  var c = document.getElementB
