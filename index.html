@@ -1,5 +1,5 @@
 А<!DOCTYPE html>
-<html lang="ru">
+<html lang="nl">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -23,8 +23,6 @@ h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6.5rem);fon
 .hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--gold);line-height:1.6;margin-bottom:.6rem;}
 .hero-tagline-sub{font-size:.85rem;color:var(--stone);line-height:1.8;letter-spacing:.06em;}
 .hero-divider{width:60px;height:1px;background:var(--emerald);margin:2.5rem 0;}
-.hero-cta{display:inline-block;padding:.85rem 2.4rem;border:1px solid var(--emerald);color:var(--gold);text-decoration:none;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;transition:all .4s;}
-.hero-cta:hover{background:rgba(74,124,82,.2);border-color:var(--gold);}
 section{padding:7rem 3rem;max-width:1100px;margin:0 auto;}
 .section-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald);margin-bottom:1rem;}
 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:2rem;}
@@ -82,7 +80,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
   z-index: 2;
   width: min(700px, 88vw);
   text-align: center;
-  min-height: 160px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +99,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 .s-text {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(1.5rem, 3.8vw, 2.5rem);
+  font-size: clamp(1.3rem, 3.2vw, 2.1rem);
   line-height: 1.35;
   color: #f0ede6;
   text-shadow: 0 2px 24px rgba(0,0,0,0.5);
@@ -111,6 +109,16 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
   opacity: 0;
   transform: translateY(13px);
   animation: sWord .44s cubic-bezier(.22,1,.36,1) forwards;
+}
+.s-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(.75rem, 1.8vw, .9rem);
+  font-weight: 300;
+  color: rgba(200,212,192,0.7);
+  line-height: 1.7;
+  letter-spacing: .04em;
+  opacity: 0;
+  animation: sFadeUp .5s ease forwards .6s;
 }
 .s-line {
   width: 34px; height: 1px;
@@ -157,11 +165,11 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <nav>
 <a class="nav-logo" href="#hero">Sapiomidas</a>
 <ul class="nav-links">
-<li><a href="#about">О проекте</a></li>
-<li><a href="#concepts">Концепции</a></li>
-<li><a href="#essays">Эссе</a></li>
-<li><a href="#discussions">Дискуссии</a></li>
-<li><a href="#contact">Контакт</a></li>
+<li><a href="#about">Over · About · О проекте</a></li>
+<li><a href="#concepts">Concepten · Concepts · Концепции</a></li>
+<li><a href="#essays">Essays · Эссе</a></li>
+<li><a href="#discussions">Dialoog · Dialogue · Дискуссии</a></li>
+<li><a href="#contact">Contact · Контакт</a></li>
 </ul>
 </nav>
 
@@ -170,10 +178,9 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <div class="hero-content">
 <p class="hero-eyebrow">ecomidas.org</p>
 <h1>Sapiomidas</h1>
-<p class="hero-tagline">Сила в разуме и здравом смысле</p>
-<p class="hero-tagline-sub">Strength through reason and common sense<br>Kracht door rede en gezond verstand</p>
+<p class="hero-tagline">Kracht door rede en gezond verstand</p>
+<p class="hero-tagline-sub">Strength through reason and common sense<br>Сила в разуме и здравом смысле</p>
 <div class="hero-divider"></div>
-<a class="hero-cta" href="#about">Войти</a>
 </div>
 </section>
 
@@ -183,7 +190,6 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
   <div class="s-photo"><img src="IMG20251118164622.jpg" alt=""></div>
   <div class="s-photo"><img src="IMG20260327101727.jpg" alt=""></div>
   <div class="s-photo"><img src="IMG20260401065048.jpg" alt=""></div>
-  <div class="s-photo"><img src="IMG20260411065548.jpg" alt=""></div>
   <div class="s-overlay"></div>
   <div class="s-stage" id="sStage"></div>
   <div class="s-nav">
@@ -194,28 +200,32 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 </div>
 
 <section id="about">
-<p class="section-label">О проекте · About · Over het project</p>
-<h2>Два начала,<br>один исток</h2>
-<p>Сапиомидас — это симбиоз человека и природы. Человек в своём развитии забыл, что он дитя природы, и ложно решил, что он хозяин. Сапиомидас предлагает помирить человека и природу — не меняя друг друга.</p>
+<p class="section-label">Over het project · About · О проекте</p>
+<h2>Twee bronnen,<br>één oorsprong</h2>
+<p>Sapiomidas is een symbiose van mens en natuur. In zijn ontwikkeling vergat de mens dat hij een kind van de natuur is, en besloot hij ten onrechte dat hij de baas is. Sapiomidas stelt voor mens en natuur te verzoenen — zonder elkaar te veranderen.</p>
 <br>
-<p style="font-style:italic;color:var(--stone);font-size:.9rem;">Two ideas from one source — separated to gain form, reunited in purpose.</p>
+<p style="font-style:italic;color:var(--stone);font-size:.9rem;">Two beginnings, one source — separated to gain form, reunited in purpose.</p>
+<br>
+<p style="font-style:italic;color:var(--stone);font-size:.9rem;">Два начала, один исток — разделились, чтобы обрести форму, воссоединились в цели.</p>
 </section>
 
 <section id="concepts" style="border-top:1px solid rgba(74,124,82,.2);">
-<p class="section-label">Концепции · Concepts</p>
-<h2>Сапиократия<br>и Экомидас</h2>
+<p class="section-label">Concepten · Concepts · Концепции</p>
+<h2>Sapiocracy<br>en Ecomidas</h2>
 <div class="concepts-grid">
 <div class="concept-card">
 <div class="concept-num">I</div>
-<div class="concept-title">Сапиократия</div>
-<p>Разум и совесть как личный принцип управления собой и миром. Не идеология — а внутренний компас, который выбирают.</p>
+<div class="concept-title">Sapiocracy</div>
+<p>Rede en geweten als persoonlijk principe van zelfbestuur en wereldbestuur. Geen ideologie — maar een intern kompas dat men kiest.</p>
 <br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Reason and conscience as a personal governing principle.</p>
+<br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Разум и совесть как личный принцип управления собой и миром.</p>
 </div>
 <div class="concept-card">
 <div class="concept-num">II</div>
-<div class="concept-title">Экомидас</div>
-<p>Модель, делающая восстановление природы финансово привлекательнее её разрушения. Перенаправление существующих мотивов в сторону регенерации.</p>
+<div class="concept-title">Ecomidas</div>
+<p>Een model dat het herstel van de natuur financieel aantrekkelijker maakt dan de vernietiging ervan. Bestaande motieven omgeleid naar regeneratie.</p>
 <br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Making ecological restoration more profitable than exploitation.</p>
+<br><p style="font-size:.8rem;color:var(--stone);font-style:italic;">Восстановление природы — выгоднее её разрушения.</p>
 </div>
 </div>
 </section>
@@ -227,7 +237,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <br>
 <a class="essay-item" href="zachozhdenie-sapiokratii.html">
 <span class="essay-title">Зарождение Сапиократии</span>
-  
+
  <a class="essay-item" href="zhizn-silnee.html">
 <span class="essay-title">Жизнь сильнее · Life Is Stronger</span>
 <span class="essay-meta">Sapiomidas · 2026</span>
@@ -283,11 +293,30 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 
 <script>
 const slogans = [
-  { label: "Сапиократия", text: "Разум — не привилегия. Это единственная власть, которой можно доверять." },
-  { label: "Экомидас", text: "Природа восстанавливается не потому что так правильно — а потому что это выгодно." },
-  { label: "VanHolland", text: "Идеи не изобретают. Их узнают." },
-  { label: "Сапиомидас", text: "Человеческая природа — не проблема. Это материал." },
-  { label: "Сапиократия", text: "Гусиный тест: если гусь умнее кандидата — кандидат не проходит." }
+  {
+    label: "Sapiocracy · Sapiocracy · Сапиократия",
+    nl: "Rede is geen privilege. Het is de enige macht die je kunt vertrouwen.",
+    en: "Reason is not a privilege. It is the only power that can be trusted.",
+    ru: "Разум — не привилегия. Это единственная власть, которой можно доверять."
+  },
+  {
+    label: "Ecomidas · Ecomidas · Экомидас",
+    nl: "De natuur herstelt zich niet omdat het juist is — maar omdat het loont.",
+    en: "Nature restores itself not because it is right — but because it is profitable.",
+    ru: "Природа восстанавливается не потому что так правильно — а потому что это выгодно."
+  },
+  {
+    label: "VanHolland · VanHolland · VanHolland",
+    nl: "Ideeën worden niet uitgevonden. Ze worden herkend.",
+    en: "Ideas are not invented. They are recognised.",
+    ru: "Идеи не изобретают. Их узнают."
+  },
+  {
+    label: "Sapiomidas · Sapiomidas · Сапиомидас",
+    nl: "De menselijke natuur is geen probleem. Het is het materiaal.",
+    en: "Human nature is not a problem. It is the material.",
+    ru: "Человеческая природа — не проблема. Это материал."
+  }
 ];
 
 let cur = 0, busy = false;
@@ -307,7 +336,7 @@ function buildDots() {
 
 function render() {
   const s = slogans[cur];
-  const words = s.text.split(' ');
+  const words = s.nl.split(' ');
   const html = words.map((w, i) =>
     `<span class="w" style="animation-delay:${0.2 + i * 0.065}s">${w}</span>`
   ).join(' ');
@@ -317,6 +346,7 @@ function render() {
       <div class="s-label">${s.label}</div>
       <div class="s-text">${html}</div>
       <div class="s-line" style="animation-delay:${lineDelay}s"></div>
+      <div class="s-sub">${s.en}<br>${s.ru}</div>
     </div>`;
 }
 
@@ -326,7 +356,7 @@ function go(idx) {
   stage.style.opacity = '0';
   photos[cur].classList.remove('on');
   cur = idx;
-  photos[cur].classList.add('on');
+  photos[cur % photos.length].classList.add('on');
   setTimeout(() => {
     render();
     stage.style.opacity = '1';
