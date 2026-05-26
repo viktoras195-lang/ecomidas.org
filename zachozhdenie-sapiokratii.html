@@ -6,47 +6,82 @@
 <title>Зарождение Сапиократии · Sapiomidas</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--forest:#1a2a1e;--moss:#2d4a32;--fern:#3d6b45;--silver:#c8d4c0;--mist:#e8ede4;--emerald:#4a7c52;--gold:#b8c9a0;--stone:#8a9e88;--white:#f4f7f2;}
+:root{--forest:#1a2a1e;--moss:#2d4a32;--fern:#3d6b45;--emerald:#4a7c52;--gold:#b8c9a0;--stone:#8a9e88;--white:#f4f7f2;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background-color:var(--forest);color:var(--mist);font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.02em;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(26,42,30,.97),transparent);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.12em;color:var(--gold);text-decoration:none;}
-.nav-back{color:var(--silver);text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;}
-.nav-back:hover{color:var(--white);}
-.article-wrap{max-width:720px;margin:0 auto;padding:10rem 3rem 7rem;}
+body{background-color:#ffffff;color:#1c1c1c;font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.02em;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.97);border-bottom:1px solid #e0e8da;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.12em;color:var(--moss);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;align-items:center;}
+.nav-back{color:var(--stone);text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;}
+.nav-back:hover{color:var(--moss);}
+.lang-switch{display:flex;gap:.5rem;}
+.lang-switch a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#aaa;text-decoration:none;padding:2px 6px;border:1px solid #ddd;border-radius:3px;transition:all .2s;}
+.lang-switch a:hover,.lang-switch a.active{color:var(--moss);border-color:var(--moss);}
+.article-wrap{max-width:720px;margin:0 auto;padding:9rem 3rem 7rem;}
 .article-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald);margin-bottom:1.5rem;}
-.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1rem;letter-spacing:.03em;}
-.article-meta{font-size:.75rem;color:var(--stone);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3rem;}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,4rem);font-weight:300;color:#111;line-height:1.1;margin-bottom:1rem;letter-spacing:.03em;}
+.article-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:#777;margin-bottom:2.5rem;}
 .article-divider{width:60px;height:1px;background:var(--emerald);margin:2.5rem 0;}
-.article-body{font-family:'Cormorant Garamond',serif;font-size:1.25rem;line-height:1.9;color:var(--silver);}
-.article-body p{margin-bottom:1.8rem;max-width:100%;}
-.article-body h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--gold);margin:3rem 0 1.2rem;letter-spacing:.04em;}
-.article-body .chapter-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(74,124,82,.3);line-height:1;margin-bottom:.5rem;}
-footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);font-size:.75rem;color:var(--stone);margin-top:4rem;}
-@media(max-width:700px){nav{padding:1.2rem 1.5rem;}.article-wrap{padding:8rem 1.5rem 5rem;}}
+.epigraph{border-left:2px solid var(--emerald);padding-left:1.2rem;margin:2rem 0 2.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:#555;}
+.article-body{font-family:'Cormorant Garamond',serif;font-size:1.22rem;line-height:1.9;color:#2a2a2a;}
+.article-body p{margin-bottom:1.6rem;}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--moss);margin:3rem 0 1rem;letter-spacing:.04em;}
+.chapter-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:rgba(45,74,50,.18);line-height:1;margin-bottom:.3rem;}
+.epilog{border-top:1px solid #e0e8da;padding-top:2.5rem;margin-top:1rem;}
+footer{padding:2.5rem 3rem;text-align:center;border-top:1px solid #e0e8da;font-size:.75rem;color:#aaa;margin-top:4rem;}
+@media(max-width:700px){nav{padding:1.2rem 1.5rem;}.article-wrap{padding:8rem 1.5rem 5rem;}.lang-switch{display:none;}}
 </style>
 </head>
 <body>
 <nav>
-<a class="nav-logo" href="index.html">Sapiomidas</a>
-<a class="nav-back" href="index.html#essays">← Эссе</a>
+  <a class="nav-logo" href="index.html">Sapiomidas</a>
+  <div class="nav-links">
+    <div class="lang-switch">
+      <a href="zachozhdenie-sapiokratii.html" class="active">РУС</a>
+      <a href="zachozhdenie-sapiokratii-en.html">ENG</a>
+      <a href="zachozhdenie-sapiokratii-nl.html">NL</a>
+    </div>
+    <a class="nav-back" href="index.html#essays">← Эссе</a>
+  </div>
 </nav>
 
 <div class="article-wrap">
   <p class="article-label">Эссе · VanHolland · 2026</p>
   <h1 class="article-title">Зарождение<br>Сапиократии</h1>
-  <p class="article-meta">ecomidas.org · VanHolland</p>
-  <div class="article-divider"></div>
+  <p class="article-subtitle">Из старых тетрадей о человеке, разуме и совести</p>
+
+  <div class="epigraph">«Хаос — это порядок, который ещё не понял себя.»</div>
 
   <div class="article-body">
+
+    <p>Иногда мысль рождается не в тишине кабинета, а на краю усталости — в тетрадях, куда записываешь не то, что хочешь сказать миру, а то, что не можешь больше держать в себе. Из таких тетрадей родился этот текст. Не философский трактат и не манифест — скорее, попытка честно понять, почему разум не спасает людей от глупости, и возможно ли общество, где власть принадлежит не страху, а совести.</p>
+
+    <div class="article-divider"></div>
+
+    <div class="chapter-num">1</div>
+    <h3>Демократия как иллюзия выбора</h3>
+    <p>Демократия. Народовластие. Красивое слово. Но стоит присмотреться — и видно: власть остаётся у меньшинства, только теперь это меньшинство легализовано процедурой голосования. Представь: три равные группы людей. Одна голосует «за», другая «против», третья — не участвует. Побеждает первая. Формально всё правильно. Фактически — две трети несогласны.</p>
+    <p>Неучастие — тоже позиция, только беззвучная. Но система не слышит тишину. Так рождается иллюзия народовластия, в которой удобно жить и правителям, и управляемым. Большинство не спорит — ему удобно. А удобство — самая крепкая форма подчинения. Так демократия превращается в мягкую тиранию согласия.</p>
+
+    <div class="chapter-num">2</div>
+    <h3>Равновесие без гармонии</h3>
+    <p>Современное общество научилось держать людей в состоянии устойчивого равновесия: месяц труда — месяц жизни, зарплата — еда, жильё, короткий отдых, чтобы хватило сил на следующий месяц труда. Это равновесие удобно системе, но разрушает человека. Оно не даёт падать — и не позволяет взлететь.</p>
+    <p>Мы перестали быть личностями и стали функциями. Спроси любого: кто ты? Он ответит: водитель, бухгалтер, инженер. Редко — человек.</p>
+
+    <div class="chapter-num">3</div>
+    <h3>Утрата самопознания</h3>
+    <p>Когда человек теряет имя своей души, он ищет замену в должности. Так мы начали путать смысл с профессией, а успех — с количеством денег. Образование готовит исполнителей, но не учит понимать себя. И чем образованнее общество, тем чаще люди несчастны. Потому что ум научился считать, а сердце разучилось чувствовать.</p>
+
+    <div class="chapter-num">4</div>
+    <h3>Предназначение и счастье</h3>
+    <p>Каждый ребёнок рождается с направлением, как росток, тянущийся к свету. Но часто этот росток заворачивают в железный колпак чужих желаний. Ты хочешь рисовать — тебя учат зарабатывать. Ты хочешь заботиться о животных — тебя тянут на юриста. Ты любишь тишину — тебя выталкивают на сцену.</p>
+    <p>Ты стараешься из любви, но проходит время — и понимаешь: всё, что делал, не твоё. Настоящее счастье — это не отдых и не деньги, а внутреннее соответствие. Когда делаешь то, к чему создан, и мир откликается согласием.</p>
 
     <div class="chapter-num">5</div>
     <h3>Алгоритм совести</h3>
     <p>Наступит время, когда технологии перестанут заменять человека и начнут помогать ему понять себя. Система не должна управлять, она должна направлять. Не экзамен, а зеркало. Не надзор, а навигация.</p>
     <p>Каждый проходит тест — не на интеллект, а на честность, сострадание, способность слышать других. Так рождается власть Совести и Разума — Сапиократия. Где управляют не по званию, а по способности быть человеком.</p>
-
-    <div class="article-divider"></div>
 
     <div class="chapter-num">6</div>
     <h3>Энергия труда</h3>
@@ -54,24 +89,24 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
     <p>Но мир придумал обратную формулу: мы измеряем труд деньгами, а не смыслом. Если бы труд был направлен на благо природы и жизни, богатство перестало бы быть преступлением.</p>
     <p>Так родилась идея Экомидаса — где жадность превращается в двигатель добра, а процветание человека означает процветание планеты.</p>
 
-    <div class="article-divider"></div>
-
     <div class="chapter-num">7</div>
     <h3>Свобода</h3>
     <p>Свобода — не право делать что угодно. Свобода — это точное совпадение человека и его пути. Несвободен тот, кто живёт чужой жизнью. Свободен тот, кто в согласии со своей душой.</p>
 
     <div class="article-divider"></div>
 
-    <h3>Эпилог</h3>
-    <p>Все эти мысли — не теория. Это попытка честно понять, почему разум не спасает человечество от глупости.</p>
-    <p>Мы живём в эпоху, когда рушатся старые формы, и, может быть, Сапиократия и Экомидас — всего лишь слова, но за ними — зов. Зов к ответственности, к совести, к пониманию, что человек — не хозяин, а часть Разума.</p>
+    <div class="epilog">
+      <h3 style="color:#777;font-size:1.3rem;">Эпилог</h3>
+      <p>Все эти мысли — не теория. Это попытка честно понять, почему разум не спасает человечество от глупости.</p>
+      <p>Мы живём в эпоху, когда рушатся старые формы, и, может быть, Сапиократия и Экомидас — всего лишь слова, но за ними — зов. Зов к ответственности, к совести, к пониманию, что человек — не хозяин, а часть Разума.</p>
+    </div>
 
   </div>
 </div>
 
 <footer>
-<p>© 2026 Sapiomidas · ecomidas.org · VanHolland</p>
-<p style="margin-top:.5rem;">Нидерланды · Netherlands · Nederland</p>
+  <p>© 2026 Sapiomidas · ecomidas.org · VanHolland</p>
+  <p style="margin-top:.5rem;">Нидерланды · Netherlands · Nederland</p>
 </footer>
 </body>
 </html>
