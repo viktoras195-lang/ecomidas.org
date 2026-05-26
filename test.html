@@ -1,112 +1,92 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="nl">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Тест Сапиократии · Ecomidas</title>
+<title>Sapiocracy Test · Ecomidas</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --les: #1A2A1E;
-  --mox: #2d4a32;
-  --pap: #3d6b45;
-  --sil: #c8d4c0;
-  --tum: #e8ede4;
-  --izm: #4a7c52;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { background:#1A2A1E; color:#e8ede4; font-family:'Jost',sans-serif; font-weight:300; min-height:100vh; }
-
-nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; background:rgba(26,42,30,0.9); border-bottom:1px solid rgba(74,124,82,0.2); }
-.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#c8d4c0; text-decoration:none; }
-.nav-back { font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; color:#c8d4c0; text-decoration:none; opacity:0.7; }
-
-.hero { padding:7rem 2rem 3rem; border-bottom:1px solid rgba(74,124,82,0.2); }
-.section-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:1rem; }
-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,6vw,4.5rem); font-weight:300; color:#e8ede4; margin-bottom:1rem; line-height:1.1; }
-.hero-sub { font-size:.95rem; color:#c8d4c0; max-width:560px; line-height:1.7; opacity:0.85; }
-
-.intro { padding:3rem 2rem; border-bottom:1px solid rgba(74,124,82,0.2); }
-.intro p { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:#c8d4c0; line-height:1.8; max-width:640px; }
-
-.progress-wrap { padding:2rem 2rem 0; }
-.progress-bar { height:2px; background:rgba(74,124,82,0.2); border-radius:1px; overflow:hidden; }
-.progress-fill { height:100%; background:#4a7c52; transition:width .5s; border-radius:1px; width:0%; }
-
-.test-wrap { padding:2rem; max-width:780px; }
-
-.block { display:none; }
-.block.active { display:block; }
-
-.block-number { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; }
-.block-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:#e8ede4; margin-bottom:.6rem; }
-.block-desc { font-size:.85rem; color:#c8d4c0; opacity:.7; line-height:1.6; margin-bottom:2rem; }
-
-.question { margin-bottom:2rem; border-left:2px solid rgba(74,124,82,0.4); padding-left:1.2rem; }
-.question-text { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; line-height:1.6; margin-bottom:1rem; }
-
-.options { display:flex; flex-direction:column; gap:.5rem; }
-.option { padding:.85rem 1rem; border:1px solid rgba(74,124,82,0.25); border-radius:4px; cursor:pointer; display:flex; gap:.8rem; align-items:flex-start; background:transparent; transition:all .2s; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-.option.sel { border-color:#4a7c52; background:rgba(74,124,82,0.15); }
-.opt-letter { font-size:.72rem; color:#4a7c52; font-weight:500; min-width:1rem; padding-top:.1rem; }
-.opt-text { font-size:.9rem; color:#c8d4c0; line-height:1.5; }
-
-.dilemma-box { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.7; padding:1rem 1.2rem; border-left:2px solid #4a7c52; background:rgba(74,124,82,0.06); margin-bottom:1rem; border-radius:0 4px 4px 0; }
-
-textarea { width:100%; min-height:110px; background:rgba(45,74,50,0.2); border:1px solid rgba(74,124,82,0.3); border-radius:4px; color:#e8ede4; font-family:'Cormorant Garamond',serif; font-size:1.05rem; padding:.9rem 1rem; resize:vertical; outline:none; line-height:1.6; }
-textarea::placeholder { color:rgba(200,212,192,0.3); font-style:italic; }
-textarea:focus { border-color:#4a7c52; }
-
-.btn-row { display:flex; gap:1rem; margin-top:2rem; align-items:center; flex-wrap:wrap; }
-.btn-next { padding:.75rem 2rem; background:transparent; border:1px solid #4a7c52; color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-.btn-back { padding:.75rem 1.5rem; background:transparent; border:1px solid rgba(74,124,82,0.3); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-.step-num { font-size:.75rem; color:#c8d4c0; opacity:.45; margin-left:auto; }
-
-.result-wrap { display:none; padding:2rem; max-width:780px; }
-.result-wrap.active { display:block; }
-.result-label { font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:#4a7c52; margin-bottom:.5rem; margin-top:1rem; }
-.result-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:#e8ede4; margin-bottom:.3rem; }
-.result-sub { font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:#4a7c52; margin-bottom:2rem; }
-
-.radar-wrap { display:flex; justify-content:center; margin:1.5rem 0 2.5rem; }
-
-.dim { margin-bottom:1.8rem; padding-bottom:1.8rem; border-bottom:1px solid rgba(74,124,82,0.15); }
-.dim:last-child { border-bottom:none; }
-.dim-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.4rem; }
-.dim-name { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e8ede4; }
-.dim-score { font-size:.78rem; color:#4a7c52; }
-.dim-bar { height:3px; background:rgba(74,124,82,0.2); border-radius:2px; overflow:hidden; margin-bottom:.7rem; }
-.dim-fill { height:100%; background:linear-gradient(90deg,#3d6b45,#4a7c52); border-radius:2px; transition:width 1s ease .2s; width:0%; }
-.dim-text { font-size:.87rem; color:#c8d4c0; line-height:1.7; opacity:.85; }
-
-.result-note { margin-top:2.5rem; padding:1.2rem 1.5rem; border:1px solid rgba(74,124,82,0.3); border-radius:4px; background:rgba(74,124,82,0.05); }
-.result-note p { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#c8d4c0; line-height:1.8; }
-
-.restart { margin-top:2rem; padding:.75rem 2rem; background:transparent; border:1px solid rgba(74,124,82,0.35); color:#c8d4c0; font-family:'Jost',sans-serif; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; border-radius:2px; opacity:.6; display:inline-block; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-
-@media(max-width:600px) {
-  nav { padding:1rem 1.2rem; }
-  .hero { padding:6rem 1.2rem 2.5rem; }
-  .intro, .test-wrap, .result-wrap, .progress-wrap { padding-left:1.2rem; padding-right:1.2rem; }
-}
-  </style>
+:root { --les:#1A2A1E; --sil:#c8d4c0; --tum:#e8ede4; --izm:#4a7c52; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#1A2A1E;color:#e8ede4;font-family:'Jost',sans-serif;font-weight:300;min-height:100vh;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(26,42,30,0.9);border-bottom:1px solid rgba(74,124,82,0.2);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#c8d4c0;text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:1.5rem;}
+.nav-back{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:#c8d4c0;text-decoration:none;opacity:0.7;}
+.lang-sw{display:flex;gap:.3rem;}
+.lang-sw button{background:transparent;border:1px solid rgba(74,124,82,0.3);color:#c8d4c0;font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.12em;padding:.25rem .55rem;cursor:pointer;border-radius:2px;opacity:.5;transition:all .2s;}
+.lang-sw button.on{border-color:#4a7c52;opacity:1;color:#4a7c52;}
+.hero{padding:7rem 2rem 3rem;border-bottom:1px solid rgba(74,124,82,0.2);}
+.section-label{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#4a7c52;margin-bottom:1rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:300;color:#e8ede4;margin-bottom:1rem;line-height:1.1;}
+.hero-sub{font-size:.95rem;color:#c8d4c0;max-width:560px;line-height:1.7;opacity:0.85;}
+.intro{padding:3rem 2rem;border-bottom:1px solid rgba(74,124,82,0.2);}
+.intro p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:#c8d4c0;line-height:1.8;max-width:640px;}
+.progress-wrap{padding:2rem 2rem 0;}
+.progress-bar{height:2px;background:rgba(74,124,82,0.2);border-radius:1px;overflow:hidden;}
+.progress-fill{height:100%;background:#4a7c52;transition:width .5s;border-radius:1px;width:0%;}
+.test-wrap{padding:2rem;max-width:780px;}
+.block{display:none;}
+.block.active{display:block;}
+.block-number{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#4a7c52;margin-bottom:.5rem;}
+.block-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#e8ede4;margin-bottom:.6rem;}
+.block-desc{font-size:.85rem;color:#c8d4c0;opacity:.7;line-height:1.6;margin-bottom:2rem;}
+.question{margin-bottom:2rem;border-left:2px solid rgba(74,124,82,0.4);padding-left:1.2rem;}
+.question-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#e8ede4;line-height:1.6;margin-bottom:1rem;}
+.options{display:flex;flex-direction:column;gap:.5rem;}
+.option{padding:.85rem 1rem;border:1px solid rgba(74,124,82,0.25);border-radius:4px;cursor:pointer;display:flex;gap:.8rem;align-items:flex-start;background:transparent;transition:all .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.option.sel{border-color:#4a7c52;background:rgba(74,124,82,0.15);}
+.opt-letter{font-size:.72rem;color:#4a7c52;font-weight:500;min-width:1rem;padding-top:.1rem;}
+.opt-text{font-size:.9rem;color:#c8d4c0;line-height:1.5;}
+.dilemma-box{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:#c8d4c0;line-height:1.7;padding:1rem 1.2rem;border-left:2px solid #4a7c52;background:rgba(74,124,82,0.06);margin-bottom:1rem;border-radius:0 4px 4px 0;}
+textarea{width:100%;min-height:110px;background:rgba(45,74,50,0.2);border:1px solid rgba(74,124,82,0.3);border-radius:4px;color:#e8ede4;font-family:'Cormorant Garamond',serif;font-size:1.05rem;padding:.9rem 1rem;resize:vertical;outline:none;line-height:1.6;}
+textarea::placeholder{color:rgba(200,212,192,0.3);font-style:italic;}
+textarea:focus{border-color:#4a7c52;}
+.btn-row{display:flex;gap:1rem;margin-top:2rem;align-items:center;flex-wrap:wrap;}
+.btn-next{padding:.75rem 2rem;background:transparent;border:1px solid #4a7c52;color:#c8d4c0;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn-back{padding:.75rem 1.5rem;background:transparent;border:1px solid rgba(74,124,82,0.3);color:#c8d4c0;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;opacity:.6;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.step-num{font-size:.75rem;color:#c8d4c0;opacity:.45;margin-left:auto;}
+.result-wrap{display:none;padding:2rem;max-width:780px;}
+.result-label{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#4a7c52;margin-bottom:.5rem;margin-top:1rem;}
+.result-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#e8ede4;margin-bottom:.3rem;}
+.result-sub{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#4a7c52;margin-bottom:2rem;}
+.radar-wrap{display:flex;justify-content:center;margin:1.5rem 0 2.5rem;}
+.dim{margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(74,124,82,0.15);}
+.dim:last-child{border-bottom:none;}
+.dim-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem;}
+.dim-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#e8ede4;}
+.dim-score{font-size:.78rem;color:#4a7c52;}
+.dim-bar{height:3px;background:rgba(74,124,82,0.2);border-radius:2px;overflow:hidden;margin-bottom:.7rem;}
+.dim-fill{height:100%;background:linear-gradient(90deg,#3d6b45,#4a7c52);border-radius:2px;transition:width 1s ease .2s;width:0%;}
+.dim-text{font-size:.87rem;color:#c8d4c0;line-height:1.7;opacity:.85;}
+.result-note{margin-top:2.5rem;padding:1.2rem 1.5rem;border:1px solid rgba(74,124,82,0.3);border-radius:4px;background:rgba(74,124,82,0.05);}
+.result-note p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:#c8d4c0;line-height:1.8;}
+.restart{margin-top:2rem;padding:.75rem 2rem;background:transparent;border:1px solid rgba(74,124,82,0.35);color:#c8d4c0;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;opacity:.6;display:inline-block;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+@media(max-width:600px){nav{padding:1rem 1.2rem;}.hero{padding:6rem 1.2rem 2.5rem;}.intro,.test-wrap,.result-wrap,.progress-wrap{padding-left:1.2rem;padding-right:1.2rem;}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">Сапиомидас</a>
-  <a class="nav-back" href="index.html">← Главная</a>
+  <a class="nav-logo" href="index.html">Sapiomidas</a>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button onclick="setLang('nl')" id="btn-nl" class="on">NL</button>
+      <button onclick="setLang('en')" id="btn-en">EN</button>
+      <button onclick="setLang('ru')" id="btn-ru">RU</button>
+    </div>
+    <a class="nav-back" href="index.html" id="nav-back-lnk">← Home</a>
+  </div>
 </nav>
 
 <div class="hero">
-  <p class="section-label">Диалог · Профиль</p>
-  <h1>Тест Сапиократии</h1>
-  <p class="hero-sub">Не типология. Не ярлык. Профиль — как форма, уникальная для каждого. Пять измерений.</p>
+  <p class="section-label" id="hero-label">Dialoog · Profiel</p>
+  <h1 id="hero-title">Sapiocracy Test</h1>
+  <p class="hero-sub" id="hero-sub">Geen typologie. Geen label. Een profiel — als een vorm, uniek voor iedereen. Vijf dimensies.</p>
 </div>
-
 <div class="intro">
-  <p>Отвечай как думаешь, а не как хочешь выглядеть. Нет правильных ответов — есть только твои.</p>
+  <p id="intro-text">Antwoord zoals je denkt, niet zoals je wilt overkomen. Er zijn geen goede antwoorden — alleen de jouwe.</p>
 </div>
 
 <div class="progress-wrap">
@@ -115,213 +95,419 @@ textarea:focus { border-color:#4a7c52; }
 
 <div class="test-wrap" id="testwrap">
 
+<!-- BLOCK 0 -->
 <div class="block active" id="b0">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 01 · Эмпатия</p>
-  <h2 class="block-title">Восприятие других</h2>
-  <p class="block-desc">Как ты относишься к людям — близким и чужим.</p>
+  <p class="block-number" id="b0-num">Dimensie 01 · Empathie</p>
+  <h2 class="block-title" id="b0-title">Waarneming van anderen</h2>
+  <p class="block-desc" id="b0-desc">Hoe je omgaat met mensen — nabij en onbekend.</p>
   <div class="question">
-    <p class="question-text">Коллега допустил серьёзную ошибку в проекте. Он сам об этом не знает. Что делаешь?</p>
+    <p class="question-text" id="q1-text">Een collega heeft een ernstige fout gemaakt in een project. Hij weet het zelf niet. Wat doe je?</p>
     <div class="options" id="q1">
-      <div class="option" onclick="pick('q1',1,this)"><span class="opt-letter">А</span><span class="opt-text">Сообщаю руководству — это их задача</span></div>
-      <div class="option" onclick="pick('q1',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Говорю коллеге напрямую, до того как дойдёт до других</span></div>
-      <div class="option" onclick="pick('q1',3,this)"><span class="opt-letter">В</span><span class="opt-text">Жду — может само разрешится</span></div>
-      <div class="option" onclick="pick('q1',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю исправить ошибку, не поднимая шума</span></div>
+      <div class="option" onclick="pick('q1',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q1a1">Ik meld het aan de leidinggevende — dat is hun taak</span></div>
+      <div class="option" onclick="pick('q1',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q1a2">Ik zeg het direct aan de collega, voordat het bij anderen terechtkomt</span></div>
+      <div class="option" onclick="pick('q1',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q1a3">Ik wacht — misschien lost het zich vanzelf op</span></div>
+      <div class="option" onclick="pick('q1',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q1a4">Ik help de fout te corrigeren zonder ophef te maken</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Человек, с которым ты давно в конфликте, приходит к тебе за помощью.</p>
+    <p class="question-text" id="q2-text">Iemand met wie je al lang in conflict bent, komt bij je om hulp.</p>
     <div class="options" id="q2">
-      <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">А</span><span class="opt-text">Отказываю — он не заслужил</span></div>
-      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Помогаю, но напоминаю о конфликте</span></div>
-      <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">В</span><span class="opt-text">Помогаю молча, не касаясь прошлого</span></div>
-      <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Помогаю — но это не значит что простил или пустил обратно</span></div>
+      <div class="option" onclick="pick('q2',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q2a1">Ik weiger — hij heeft het niet verdiend</span></div>
+      <div class="option" onclick="pick('q2',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q2a2">Ik help, maar herinner aan het conflict</span></div>
+      <div class="option" onclick="pick('q2',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q2a3">Ik help zwijgend, zonder het verleden aan te raken</span></div>
+      <div class="option" onclick="pick('q2',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q2a4">Ik help — maar dat betekent niet dat ik vergeven heb of hem weer toelaat</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты наблюдаешь за незнакомым человеком — в очереди, в транспорте. Что происходит внутри?</p>
+    <p class="question-text" id="q3-text">Je observeert een vreemde — in een rij, in het openbaar vervoer. Wat gebeurt er van binnen?</p>
     <div class="options" id="q3">
-      <div class="option" onclick="pick('q3',1,this)"><span class="opt-letter">А</span><span class="opt-text">Ничего особенного, просто фон</span></div>
-      <div class="option" onclick="pick('q3',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Оцениваю — симпатичен или нет</span></div>
-      <div class="option" onclick="pick('q3',3,this)"><span class="opt-letter">В</span><span class="opt-text">Думаю какая у него жизнь, история, мир</span></div>
-      <div class="option" onclick="pick('q3',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Фантазирую о нём — потом забываю</span></div>
+      <div class="option" onclick="pick('q3',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q3a1">Niets bijzonders, gewoon achtergrond</span></div>
+      <div class="option" onclick="pick('q3',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q3a2">Ik beoordeel — sympathiek of niet</span></div>
+      <div class="option" onclick="pick('q3',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q3a3">Ik denk aan zijn leven, zijn verhaal, zijn wereld</span></div>
+      <div class="option" onclick="pick('q3',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q3a4">Ik fantaseer over hem — dan vergeet ik het weer</span></div>
     </div>
   </div>
   <div class="btn-row">
-    <button class="btn-next" onclick="go(0,1)">Далее</button>
+    <button class="btn-next" id="btn-next-0" onclick="go(0,1)">Volgende</button>
     <span class="step-num">1 / 5</span>
   </div>
 </div>
 
+<!-- BLOCK 1 -->
 <div class="block" id="b1">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 02 · Горизонт</p>
-  <h2 class="block-title">Планирование и ответственность</h2>
-  <p class="block-desc">Как ты видишь время и берёшь на себя последствия.</p>
+  <p class="block-number" id="b1-num">Dimensie 02 · Horizon</p>
+  <h2 class="block-title" id="b1-title">Planning en verantwoordelijkheid</h2>
+  <p class="block-desc" id="b1-desc">Hoe je tijd ziet en consequenties op je neemt.</p>
   <div class="question">
-    <p class="question-text">Ты начинаешь важное дело. Где твой взгляд — инстинктивно?</p>
+    <p class="question-text" id="q4-text">Je begint aan iets belangrijks. Waar gaat je blik instinctief naartoe?</p>
     <div class="options" id="q4">
-      <div class="option" onclick="pick('q4',1,this)"><span class="opt-letter">А</span><span class="opt-text">На ближайшем результате — неделя, месяц</span></div>
-      <div class="option" onclick="pick('q4',2,this)"><span class="opt-letter">Б</span><span class="opt-text">На цели — путь открывается в движении</span></div>
-      <div class="option" onclick="pick('q4',3,this)"><span class="opt-letter">В</span><span class="opt-text">На том что останется после меня</span></div>
-      <div class="option" onclick="pick('q4',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не вижу — просто делаю первый шаг</span></div>
+      <div class="option" onclick="pick('q4',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q4a1">Het dichtstbijzijnde resultaat — een week, een maand</span></div>
+      <div class="option" onclick="pick('q4',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q4a2">Het doel — de weg ontvouwt zich al bewegend</span></div>
+      <div class="option" onclick="pick('q4',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q4a3">Wat er na mij overblijft</span></div>
+      <div class="option" onclick="pick('q4',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q4a4">Ik zie niets — ik zet gewoon de eerste stap</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты принял решение которое оказалось ошибочным. Пострадали другие люди.</p>
+    <p class="question-text" id="q5-text">Je hebt een beslissing genomen die verkeerd uitpakte. Anderen hebben eronder geleden.</p>
     <div class="options" id="q5">
-      <div class="option" onclick="pick('q5',1,this)"><span class="opt-letter">А</span><span class="opt-text">Объясняю — были объективные причины</span></div>
-      <div class="option" onclick="pick('q5',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Признаю ошибку и пытаюсь исправить чего бы это ни стоило</span></div>
-      <div class="option" onclick="pick('q5',3,this)"><span class="opt-letter">В</span><span class="opt-text">Молча исправляю — без лишних слов</span></div>
-      <div class="option" onclick="pick('q5',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Жду пока само забудется</span></div>
+      <div class="option" onclick="pick('q5',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q5a1">Ik leg uit — er waren objectieve redenen</span></div>
+      <div class="option" onclick="pick('q5',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q5a2">Ik erken de fout en probeer het te herstellen, wat het ook kost</span></div>
+      <div class="option" onclick="pick('q5',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q5a3">Ik herstel het zwijgend — zonder woorden</span></div>
+      <div class="option" onclick="pick('q5',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q5a4">Ik wacht tot het vanzelf vergeten wordt</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Ты знаешь что твоя идея скорее всего не реализуется при твоей жизни. Это меняет что-то?</p>
-    <textarea placeholder="Напиши своими словами..." oninput="ans['q6']=this.value"></textarea>
+    <p class="question-text" id="q6-text">Je weet dat je idee waarschijnlijk niet gerealiseerd wordt tijdens jouw leven. Verandert dat iets?</p>
+    <textarea id="ta-q6" placeholder="Schrijf in eigen woorden..." oninput="ans['q6']=this.value"></textarea>
   </div>
   <div class="btn-row">
-    <button class="btn-back" onclick="go(1,0)">Назад</button>
-    <button class="btn-next" onclick="go(1,2)">Далее</button>
+    <button class="btn-back" id="btn-back-1" onclick="go(1,0)">Terug</button>
+    <button class="btn-next" id="btn-next-1" onclick="go(1,2)">Volgende</button>
     <span class="step-num">2 / 5</span>
   </div>
 </div>
 
+<!-- BLOCK 2 -->
 <div class="block" id="b2">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 03 · Профессионализм</p>
-  <h2 class="block-title">Стандарт и качество</h2>
-  <p class="block-desc">Откуда берётся твой стандарт работы.</p>
+  <p class="block-number" id="b2-num">Dimensie 03 · Professionalisme</p>
+  <h2 class="block-title" id="b2-title">Standaard en kwaliteit</h2>
+  <p class="block-desc" id="b2-desc">Waar jouw werkstandaard vandaan komt.</p>
   <div class="question">
-    <p class="question-text">Ты делаешь работу. Никто не проверяет, заказчик не заметит разницы. Как делаешь?</p>
+    <p class="question-text" id="q7-text">Je doet werk. Niemand controleert het, de opdrachtgever merkt het verschil niet. Hoe doe je het?</p>
     <div class="options" id="q7">
-      <div class="option" onclick="pick('q7',1,this)"><span class="opt-letter">А</span><span class="opt-text">Достаточно хорошо — зачем тратить лишнее время</span></div>
-      <div class="option" onclick="pick('q7',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Так же как всегда — внешний контроль не меняет</span></div>
-      <div class="option" onclick="pick('q7',3,this)"><span class="opt-letter">В</span><span class="opt-text">Лучше обычного — раз никто не видит, делаю для себя</span></div>
-      <div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Не могу сделать плохо — если не получится, вернусь и переделаю</span></div>
+      <div class="option" onclick="pick('q7',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q7a1">Goed genoeg — waarom extra tijd besteden</span></div>
+      <div class="option" onclick="pick('q7',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q7a2">Zoals altijd — externe controle verandert niets</span></div>
+      <div class="option" onclick="pick('q7',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q7a3">Beter dan normaal — als niemand kijkt, doe ik het voor mezelf</span></div>
+      <div class="option" onclick="pick('q7',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q7a4">Ik kan het niet slecht doen — als het niet lukt, kom ik terug en doe het over</span></div>
     </div>
   </div>
   <div class="question">
-    <p class="question-text">Тебя просят сделать что-то неправильно. Заказчик настаивает и платит.</p>
+    <p class="question-text" id="q8-text">Je wordt gevraagd iets verkeerds te doen. De opdrachtgever dringt aan en betaalt.</p>
     <div class="options" id="q8">
-      <div class="option" onclick="pick('q8',1,this)"><span class="opt-letter">А</span><span class="opt-text">Делаю как просят — клиент всегда прав</span></div>
-      <div class="option" onclick="pick('q8',2,this)"><span class="opt-letter">Б</span><span class="opt-text">Делаю как просят, но предупреждаю о последствиях</span></div>
-      <div class="option" onclick="pick('q8',3,this)"><span class="opt-letter">В</span><span class="opt-text">Отказываюсь от заказа</span></div>
-      <div class="option" onclick="pick('q8',4,this)"><span class="opt-letter">Г</span><span class="opt-text">Делаю правильно — даже в одиночку, даже под давлением</span></div>
+      <div class="option" onclick="pick('q8',1,this)"><span class="opt-letter">A</span><span class="opt-text" id="q8a1">Ik doe wat gevraagd wordt — de klant heeft altijd gelijk</span></div>
+      <div class="option" onclick="pick('q8',2,this)"><span class="opt-letter">B</span><span class="opt-text" id="q8a2">Ik doe het, maar waarschuw voor de gevolgen</span></div>
+      <div class="option" onclick="pick('q8',3,this)"><span class="opt-letter">C</span><span class="opt-text" id="q8a3">Ik weiger de opdracht</span></div>
+      <div class="option" onclick="pick('q8',4,this)"><span class="opt-letter">D</span><span class="opt-text" id="q8a4">Ik doe het juist — ook alleen, ook onder druk</span></div>
     </div>
   </div>
   <div class="btn-row">
-    <button class="btn-back" onclick="go(2,1)">Назад</button>
-    <button class="btn-next" onclick="go(2,3)">Далее</button>
+    <button class="btn-back" id="btn-back-2" onclick="go(2,1)">Terug</button>
+    <button class="btn-next" id="btn-next-2" onclick="go(2,3)">Volgende</button>
     <span class="step-num">3 / 5</span>
   </div>
 </div>
 
+<!-- BLOCK 3 -->
 <div class="block" id="b3">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 04 · Моральный компас</p>
-  <h2 class="block-title">Дилеммы без правильных ответов</h2>
-  <p class="block-desc">Здесь нет вариантов. Только ситуация и твои слова.</p>
+  <p class="block-number" id="b3-num">Dimensie 04 · Moreel kompas</p>
+  <h2 class="block-title" id="b3-title">Dilemma's zonder juiste antwoorden</h2>
+  <p class="block-desc" id="b3-desc">Hier zijn geen opties. Alleen de situatie en jouw woorden.</p>
   <div class="question">
-    <div class="dilemma-box">Ты можешь спасти десятерых незнакомых людей — но ценой серьёзного вреда одному человеку, которого знаешь лично и который ни в чём не виноват.</div>
-    <p class="question-text">Что делаешь?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q9']=this.value"></textarea>
+    <div class="dilemma-box" id="d1-text">Je kunt tien onbekenden redden — maar ten koste van ernstige schade aan één persoon die je persoonlijk kent en die nergens schuld aan heeft.</div>
+    <p class="question-text" id="q9-text">Wat doe je?</p>
+    <textarea id="ta-q9" placeholder="Jouw antwoord..." oninput="ans['q9']=this.value"></textarea>
   </div>
   <div class="question">
-    <div class="dilemma-box">Ты знаешь правду о ситуации. Правда причинит боль человеку — но без неё он примет неверное решение с долгими последствиями.</div>
-    <p class="question-text">Говоришь?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q10']=this.value"></textarea>
+    <div class="dilemma-box" id="d2-text">Je kent de waarheid over een situatie. De waarheid zal iemand pijn doen — maar zonder die waarheid neemt hij een verkeerde beslissing met langdurige gevolgen.</div>
+    <p class="question-text" id="q10-text">Zeg je het?</p>
+    <textarea id="ta-q10" placeholder="Jouw antwoord..." oninput="ans['q10']=this.value"></textarea>
   </div>
   <div class="btn-row">
-    <button class="btn-back" onclick="go(3,2)">Назад</button>
-    <button class="btn-next" onclick="go(3,4)">Далее</button>
+    <button class="btn-back" id="btn-back-3" onclick="go(3,2)">Terug</button>
+    <button class="btn-next" id="btn-next-3" onclick="go(3,4)">Volgende</button>
     <span class="step-num">4 / 5</span>
   </div>
 </div>
 
+<!-- BLOCK 4 -->
 <div class="block" id="b4">
   <div style="height:1.5rem"></div>
-  <p class="block-number">Измерение 05 · Социальное мышление</p>
-  <h2 class="block-title">Сложные системные вопросы</h2>
-  <p class="block-desc">Религия, власть, неравенство — без простых ответов.</p>
+  <p class="block-number" id="b4-num">Dimensie 05 · Sociaal denken</p>
+  <h2 class="block-title" id="b4-title">Complexe systeemvragen</h2>
+  <p class="block-desc" id="b4-desc">Religie, macht, ongelijkheid — zonder eenvoudige antwoorden.</p>
   <div class="question">
-    <div class="dilemma-box">Миллиарды людей верят — и эта вера даёт им смысл. Но она же исторически служила инструментом войн и подавления.</div>
-    <p class="question-text">Что с этим делать в обществе?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q11']=this.value"></textarea>
+    <div class="dilemma-box" id="d3-text">Miljarden mensen geloven — en dat geloof geeft hen zin. Maar datzelfde geloof heeft historisch gediend als instrument van oorlogen en onderdrukking.</div>
+    <p class="question-text" id="q11-text">Wat doe je daarmee in de samenleving?</p>
+    <textarea id="ta-q11" placeholder="Jouw antwoord..." oninput="ans['q11']=this.value"></textarea>
   </div>
   <div class="question">
-    <div class="dilemma-box">Ты у власти. Реальной. Ты можешь изменить систему — но любое изменение встретит сопротивление, и ты не можешь знать наверняка что твоё решение правильное.</div>
-    <p class="question-text">Что делаешь с этой властью?</p>
-    <textarea placeholder="Твой ответ..." oninput="ans['q12']=this.value"></textarea>
+    <div class="dilemma-box" id="d4-text">Je hebt macht. Echte macht. Je kunt het systeem veranderen — maar elke verandering zal weerstand ontmoeten, en je kunt nooit zeker weten of jouw beslissing juist is.</div>
+    <p class="question-text" id="q12-text">Wat doe je met die macht?</p>
+    <textarea id="ta-q12" placeholder="Jouw antwoord..." oninput="ans['q12']=this.value"></textarea>
   </div>
   <div class="btn-row">
-    <button class="btn-back" onclick="go(4,3)">Назад</button>
-    <button class="btn-next" onclick="showResult()">Получить профиль</button>
+    <button class="btn-back" id="btn-back-4" onclick="go(4,3)">Terug</button>
+    <button class="btn-next" id="btn-result" onclick="showResult()">Profiel ophalen</button>
     <span class="step-num">5 / 5</span>
   </div>
 </div>
 
-</div>
+</div><!-- end test-wrap -->
 
 <div class="result-wrap" id="reswrap">
-  <p class="result-label">Профиль · Сапиократия</p>
-  <h2 class="result-title">Твой профиль</h2>
-  <p class="result-sub">Не тип. Не ярлык. Форма.</p>
+  <p class="result-label" id="res-label">Profiel · Sapiocracy</p>
+  <h2 class="result-title" id="res-title">Jouw profiel</h2>
+  <p class="result-sub" id="res-sub">Geen type. Geen label. Een vorm.</p>
   <div class="radar-wrap"><canvas id="radar" width="300" height="300"></canvas></div>
   <div id="dims"></div>
   <div class="result-note"><p id="resnote"></p></div>
-  <button class="restart" onclick="restart()">Пройти заново</button>
+  <button class="restart" id="btn-restart" onclick="restart()">Opnieuw beginnen</button>
 </div>
 
 <script>
 var ans = {};
+var curLang = 'nl';
+var lastScores = null;
+
+var T = {
+  nl: {
+    navBack: '← Home',
+    heroLabel: 'Dialoog · Profiel',
+    heroTitle: 'Sapiocracy Test',
+    heroSub: 'Geen typologie. Geen label. Een profiel — als een vorm, uniek voor iedereen. Vijf dimensies.',
+    intro: 'Antwoord zoals je denkt, niet zoals je wilt overkomen. Er zijn geen goede antwoorden — alleen de jouwe.',
+    b0num:'Dimensie 01 · Empathie', b0title:'Waarneming van anderen', b0desc:'Hoe je omgaat met mensen — nabij en onbekend.',
+    b1num:'Dimensie 02 · Horizon', b1title:'Planning en verantwoordelijkheid', b1desc:'Hoe je tijd ziet en consequenties op je neemt.',
+    b2num:'Dimensie 03 · Professionalisme', b2title:'Standaard en kwaliteit', b2desc:'Waar jouw werkstandaard vandaan komt.',
+    b3num:'Dimensie 04 · Moreel kompas', b3title:"Dilemma's zonder juiste antwoorden", b3desc:'Hier zijn geen opties. Alleen de situatie en jouw woorden.',
+    b4num:'Dimensie 05 · Sociaal denken', b4title:'Complexe systeemvragen', b4desc:'Religie, macht, ongelijkheid — zonder eenvoudige antwoorden.',
+    q1:'Een collega heeft een ernstige fout gemaakt in een project. Hij weet het zelf niet. Wat doe je?',
+    q1a:['Ik meld het aan de leidinggevende — dat is hun taak','Ik zeg het direct aan de collega, voordat het bij anderen terechtkomt','Ik wacht — misschien lost het zich vanzelf op','Ik help de fout te corrigeren zonder ophef te maken'],
+    q2:'Iemand met wie je al lang in conflict bent, komt bij je om hulp.',
+    q2a:['Ik weiger — hij heeft het niet verdiend','Ik help, maar herinner aan het conflict','Ik help zwijgend, zonder het verleden aan te raken','Ik help — maar dat betekent niet dat ik vergeven heb of hem weer toelaat'],
+    q3:'Je observeert een vreemde — in een rij, in het openbaar vervoer. Wat gebeurt er van binnen?',
+    q3a:['Niets bijzonders, gewoon achtergrond','Ik beoordeel — sympathiek of niet','Ik denk aan zijn leven, zijn verhaal, zijn wereld','Ik fantaseer over hem — dan vergeet ik het weer'],
+    q4:'Je begint aan iets belangrijks. Waar gaat je blik instinctief naartoe?',
+    q4a:['Het dichtstbijzijnde resultaat — een week, een maand','Het doel — de weg ontvouwt zich al bewegend','Wat er na mij overblijft','Ik zie niets — ik zet gewoon de eerste stap'],
+    q5:'Je hebt een beslissing genomen die verkeerd uitpakte. Anderen hebben eronder geleden.',
+    q5a:['Ik leg uit — er waren objectieve redenen','Ik erken de fout en probeer het te herstellen, wat het ook kost','Ik herstel het zwijgend — zonder woorden','Ik wacht tot het vanzelf vergeten wordt'],
+    q6:'Je weet dat je idee waarschijnlijk niet gerealiseerd wordt tijdens jouw leven. Verandert dat iets?',
+    ta6:'Schrijf in eigen woorden...',
+    q7:'Je doet werk. Niemand controleert het, de opdrachtgever merkt het verschil niet. Hoe doe je het?',
+    q7a:['Goed genoeg — waarom extra tijd besteden','Zoals altijd — externe controle verandert niets','Beter dan normaal — als niemand kijkt, doe ik het voor mezelf','Ik kan het niet slecht doen — als het niet lukt, kom ik terug en doe het over'],
+    q8:'Je wordt gevraagd iets verkeerds te doen. De opdrachtgever dringt aan en betaalt.',
+    q8a:['Ik doe wat gevraagd wordt — de klant heeft altijd gelijk','Ik doe het, maar waarschuw voor de gevolgen','Ik weiger de opdracht','Ik doe het juist — ook alleen, ook onder druk'],
+    d1:'Je kunt tien onbekenden redden — maar ten koste van ernstige schade aan één persoon die je persoonlijk kent en die nergens schuld aan heeft.',
+    q9:'Wat doe je?', ta9:'Jouw antwoord...',
+    d2:'Je kent de waarheid over een situatie. De waarheid zal iemand pijn doen — maar zonder die waarheid neemt hij een verkeerde beslissing met langdurige gevolgen.',
+    q10:'Zeg je het?', ta10:'Jouw antwoord...',
+    d3:'Miljarden mensen geloven — en dat geloof geeft hen zin. Maar datzelfde geloof heeft historisch gediend als instrument van oorlogen en onderdrukking.',
+    q11:'Wat doe je daarmee in de samenleving?', ta11:'Jouw antwoord...',
+    d4:'Je hebt macht. Echte macht. Je kunt het systeem veranderen — maar elke verandering zal weerstand ontmoeten, en je kunt nooit zeker weten of jouw beslissing juist is.',
+    q12:'Wat doe je met die macht?', ta12:'Jouw antwoord...',
+    next:'Volgende', back:'Terug', getProfile:'Profiel ophalen', restart:'Opnieuw beginnen',
+    resLabel:'Profiel · Sapiocracy', resTitle:'Jouw profiel', resSub:'Geen type. Geen label. Een vorm.',
+    dimNames:['Empathie','Horizon','Professionalisme','Moreel kompas','Sociaal denken'],
+    dimTexts:[
+      ['Empathie aanwezig, maar vooral reactief.','Ontwikkelde empathie met duidelijke grenzen. Je ziet mensen als afzonderlijke werelden.','Diepe en volwassen empathie. Je handelt reflexmatig in een crisis.'],
+      ['Oriëntatie op het dichtstbijzijnde resultaat.','Kompasdenken. Het doel is zichtbaar, de weg ontvouwt zich al bewegend.','Uitgebreide horizon. Je denkt aan wat er na jou overblijft.'],
+      ['De standaard wordt bepaald door externe eisen.','Interne standaard hoger dan externe controle. Kwaliteit is een persoonlijk standpunt.','Absolute interne standaard. Je kunt het niet slecht doen — letterlijk niet.'],
+      ['Beslissingen worden situationeel genomen.','Principieel met flexibele vorm. Je neemt de last van de beslissing op je.','Morele integriteit zonder theater. Je neemt moeilijke beslissingen en draagt de gevolgen.'],
+      ['Sociale vragen worden als extern ervaren.','Systeemdenken. Je ziet mechanismen achter verschijnselen.','Diep systeembegrip. Één principe: onderwijzen, bouwen, energie richten.']
+    ],
+    noteHigh:'Het profiel toont een hoge mate van innerlijke integriteit. Je handelt vanuit principes, niet vanuit omstandigheden. Dat is zeldzaam.',
+    noteMid:'Het profiel is ongelijkmatig — zoals bij de meeste levende mensen. Sterke kanten zijn echt, zwakke kanten zijn eerlijk. Een goed vertrekpunt.',
+    noteLow:'Het profiel toont potentieel voor ontwikkeling. Sapiocracy is geen beoordeling, maar een richting. Belangrijk dat je hier bent.'
+  },
+  en: {
+    navBack: '← Home',
+    heroLabel: 'Dialogue · Profile',
+    heroTitle: 'Sapiocracy Test',
+    heroSub: 'No typology. No label. A profile — like a shape, unique to each person. Five dimensions.',
+    intro: 'Answer as you think, not as you want to appear. There are no correct answers — only yours.',
+    b0num:'Dimension 01 · Empathy', b0title:'Perception of Others', b0desc:'How you relate to people — close and strangers.',
+    b1num:'Dimension 02 · Horizon', b1title:'Planning and Responsibility', b1desc:'How you see time and take responsibility for consequences.',
+    b2num:'Dimension 03 · Professionalism', b2title:'Standard and Quality', b2desc:'Where your work standard comes from.',
+    b3num:'Dimension 04 · Moral Compass', b3title:'Dilemmas Without Right Answers', b3desc:'No options here. Only the situation and your words.',
+    b4num:'Dimension 05 · Social Thinking', b4title:'Complex Systemic Questions', b4desc:'Religion, power, inequality — without simple answers.',
+    q1:'A colleague made a serious mistake in a project. He does not know about it himself. What do you do?',
+    q1a:['I report it to management — that is their job','I tell the colleague directly, before it reaches others','I wait — maybe it will resolve itself','I help fix the mistake without making a fuss'],
+    q2:'Someone you have been in conflict with for a long time comes to you for help.',
+    q2a:['I refuse — he does not deserve it','I help, but remind him of the conflict','I help silently, without touching the past','I help — but that does not mean I have forgiven or let him back in'],
+    q3:'You are observing a stranger — in a queue, on public transport. What happens inside?',
+    q3a:['Nothing special, just background','I assess — sympathetic or not','I think about his life, his story, his world','I fantasise about him — then forget'],
+    q4:'You are starting something important. Where does your gaze go — instinctively?',
+    q4a:['The nearest result — a week, a month','The goal — the path opens as you move','What will remain after me','I do not see — I just take the first step'],
+    q5:'You made a decision that turned out to be wrong. Others were affected.',
+    q5a:['I explain — there were objective reasons','I acknowledge the mistake and try to fix it whatever it takes','I fix it silently — without words','I wait until it is forgotten'],
+    q6:'You know your idea will most likely not be realised in your lifetime. Does that change anything?',
+    ta6:'Write in your own words...',
+    q7:'You are doing work. Nobody checks it, the client will not notice the difference. How do you do it?',
+    q7a:['Good enough — why spend extra time','The same as always — external control changes nothing','Better than usual — since nobody is watching, I do it for myself','I cannot do it badly — if it does not work out, I will come back and redo it'],
+    q8:'You are asked to do something wrong. The client insists and pays.',
+    q8a:['I do what is asked — the client is always right','I do it but warn about the consequences','I refuse the job','I do it correctly — even alone, even under pressure'],
+    d1:'You can save ten strangers — but at the cost of serious harm to one person you know personally and who is innocent.',
+    q9:'What do you do?', ta9:'Your answer...',
+    d2:'You know the truth about a situation. The truth will hurt someone — but without it they will make a wrong decision with long-lasting consequences.',
+    q10:'Do you tell them?', ta10:'Your answer...',
+    d3:'Billions of people believe — and that belief gives them meaning. But historically it has also served as an instrument of wars and oppression.',
+    q11:'What do you do with that in society?', ta11:'Your answer...',
+    d4:'You have power. Real power. You can change the system — but any change will meet resistance, and you can never know for certain that your decision is right.',
+    q12:'What do you do with that power?', ta12:'Your answer...',
+    next:'Next', back:'Back', getProfile:'Get Profile', restart:'Start Over',
+    resLabel:'Profile · Sapiocracy', resTitle:'Your Profile', resSub:'No type. No label. A shape.',
+    dimNames:['Empathy','Horizon','Professionalism','Moral Compass','Social Thinking'],
+    dimTexts:[
+      ['Empathy present but mostly reactive.','Developed empathy with clear boundaries. You see people as separate worlds.','Deep and mature empathy. You act reflexively in a crisis.'],
+      ['Orientation toward the nearest result.','Compass thinking. The goal is visible, the path opens as you move.','Extended horizon. You think about what will remain after you.'],
+      ['Standard determined by external requirements.','Internal standard higher than external control. Quality is a personal position.','Absolute internal standard. You cannot do it badly — literally cannot.'],
+      ['Decisions made situationally.','Principled with flexible form. You take on the weight of the decision.','Moral integrity without theatre. You make hard decisions and carry their consequences.'],
+      ['Social questions perceived as external.','Systems thinking. You see mechanisms behind phenomena.','Deep systemic understanding. One principle: teach, build, direct energy.']
+    ],
+    noteHigh:'The profile shows a high degree of inner integrity. You act from principles, not circumstances. That is rare.',
+    noteMid:'The profile is uneven — as with most living people. Strong sides are real, weak sides are honest. A good starting point.',
+    noteLow:'The profile shows potential for development. Sapiocracy is not a grade, but a direction. It matters that you are here.'
+  },
+  ru: {
+    navBack: '← Главная',
+    heroLabel: 'Диалог · Профиль',
+    heroTitle: 'Тест Сапиократии',
+    heroSub: 'Не типология. Не ярлык. Профиль — как форма, уникальная для каждого. Пять измерений.',
+    intro: 'Отвечай как думаешь, а не как хочешь выглядеть. Нет правильных ответов — есть только твои.',
+    b0num:'Измерение 01 · Эмпатия', b0title:'Восприятие других', b0desc:'Как ты относишься к людям — близким и чужим.',
+    b1num:'Измерение 02 · Горизонт', b1title:'Планирование и ответственность', b1desc:'Как ты видишь время и берёшь на себя последствия.',
+    b2num:'Измерение 03 · Профессионализм', b2title:'Стандарт и качество', b2desc:'Откуда берётся твой стандарт работы.',
+    b3num:'Измерение 04 · Моральный компас', b3title:'Дилеммы без правильных ответов', b3desc:'Здесь нет вариантов. Только ситуация и твои слова.',
+    b4num:'Измерение 05 · Социальное мышление', b4title:'Сложные системные вопросы', b4desc:'Религия, власть, неравенство — без простых ответов.',
+    q1:'Коллега допустил серьёзную ошибку в проекте. Он сам об этом не знает. Что делаешь?',
+    q1a:['Сообщаю руководству — это их задача','Говорю коллеге напрямую, до того как дойдёт до других','Жду — может само разрешится','Помогаю исправить ошибку, не поднимая шума'],
+    q2:'Человек, с которым ты давно в конфликте, приходит к тебе за помощью.',
+    q2a:['Отказываю — он не заслужил','Помогаю, но напоминаю о конфликте','Помогаю молча, не касаясь прошлого','Помогаю — но это не значит что простил или пустил обратно'],
+    q3:'Ты наблюдаешь за незнакомым человеком — в очереди, в транспорте. Что происходит внутри?',
+    q3a:['Ничего особенного, просто фон','Оцениваю — симпатичен или нет','Думаю какая у него жизнь, история, мир','Фантазирую о нём — потом забываю'],
+    q4:'Ты начинаешь важное дело. Где твой взгляд — инстинктивно?',
+    q4a:['На ближайшем результате — неделя, месяц','На цели — путь открывается в движении','На том что останется после меня','Не вижу — просто делаю первый шаг'],
+    q5:'Ты принял решение которое оказалось ошибочным. Пострадали другие люди.',
+    q5a:['Объясняю — были объективные причины','Признаю ошибку и пытаюсь исправить чего бы это ни стоило','Молча исправляю — без лишних слов','Жду пока само забудется'],
+    q6:'Ты знаешь что твоя идея скорее всего не реализуется при твоей жизни. Это меняет что-то?',
+    ta6:'Напиши своими словами...',
+    q7:'Ты делаешь работу. Никто не проверяет, заказчик не заметит разницы. Как делаешь?',
+    q7a:['Достаточно хорошо — зачем тратить лишнее время','Так же как всегда — внешний контроль не меняет','Лучше обычного — раз никто не видит, делаю для себя','Не могу сделать плохо — если не получится, вернусь и переделаю'],
+    q8:'Тебя просят сделать что-то неправильно. Заказчик настаивает и платит.',
+    q8a:['Делаю как просят — клиент всегда прав','Делаю как просят, но предупреждаю о последствиях','Отказываюсь от заказа','Делаю правильно — даже в одиночку, даже под давлением'],
+    d1:'Ты можешь спасти десятерых незнакомых людей — но ценой серьёзного вреда одному человеку, которого знаешь лично и который ни в чём не виноват.',
+    q9:'Что делаешь?', ta9:'Твой ответ...',
+    d2:'Ты знаешь правду о ситуации. Правда причинит боль человеку — но без неё он примет неверное решение с долгими последствиями.',
+    q10:'Говоришь?', ta10:'Твой ответ...',
+    d3:'Миллиарды людей верят — и эта вера даёт им смысл. Но она же исторически служила инструментом войн и подавления.',
+    q11:'Что с этим делать в обществе?', ta11:'Твой ответ...',
+    d4:'Ты у власти. Реальной. Ты можешь изменить систему — но любое изменение встретит сопротивление, и ты не можешь знать наверняка что твоё решение правильное.',
+    q12:'Что делаешь с этой властью?', ta12:'Твой ответ...',
+    next:'Далее', back:'Назад', getProfile:'Получить профиль', restart:'Пройти заново',
+    resLabel:'Профиль · Сапиократия', resTitle:'Твой профиль', resSub:'Не тип. Не ярлык. Форма.',
+    dimNames:['Эмпатия','Горизонт','Профессионализм','Моральный компас','Социальное мышление'],
+    dimTexts:[
+      ['Эмпатия присутствует, но преимущественно реактивная.','Развитая эмпатия с чёткими границами. Видишь людей как отдельные миры.','Глубокая и зрелая эмпатия. Действуешь рефлекторно в кризисе.'],
+      ['Ориентация на ближайший результат.','Компасный тип мышления. Цель видна, путь открывается в движении.','Расширенный горизонт. Думаешь о том что останется после тебя.'],
+      ['Стандарт определяется внешними требованиями.','Внутренний стандарт выше внешнего контроля. Качество — личная позиция.','Абсолютный внутренний стандарт. Не можешь сделать плохо — физически не можешь.'],
+      ['Решения принимаются ситуативно.','Принципиальность с гибкостью формы. Берёшь на себя груз решения.','Моральная целостность без театра. Принимаешь тяжёлые решения и несёшь их последствия.'],
+      ['Социальные вопросы воспринимаются как внешние.','Системное мышление. Видишь механизмы за явлениями.','Глубокое системное понимание. Один принцип: учить, строить, направлять энергию.']
+    ],
+    noteHigh:'Профиль показывает высокую степень внутренней целостности. Ты действуешь из принципов, а не из обстоятельств. Это редко.',
+    noteMid:'Профиль неравномерный — как и у большинства живых людей. Сильные стороны реальные, слабые — честные. Хорошая точка отправления.',
+    noteLow:'Профиль показывает потенциал в развитии. Сапиократия — не оценка, а направление. Важно что ты здесь.'
+  }
+};
+
+function setLang(l) {
+  curLang = l;
+  ['nl','en','ru'].forEach(function(x){ document.getElementById('btn-'+x).classList.toggle('on', x===l); });
+  var t = T[l];
+  document.getElementById('nav-back-lnk').textContent = t.navBack;
+  document.getElementById('hero-label').textContent = t.heroLabel;
+  document.getElementById('hero-title').textContent = t.heroTitle;
+  document.getElementById('hero-sub').textContent = t.heroSub;
+  document.getElementById('intro-text').textContent = t.intro;
+  for(var b=0;b<5;b++){
+    document.getElementById('b'+b+'-num').textContent = t['b'+b+'num'];
+    document.getElementById('b'+b+'-title').textContent = t['b'+b+'title'];
+    document.getElementById('b'+b+'-desc').textContent = t['b'+b+'desc'];
+  }
+  var qs=['q1','q2','q3','q4','q5','q7','q8'];
+  qs.forEach(function(q){
+    document.getElementById(q+'-text').textContent = t[q];
+    var letters=['A','B','C','D'];
+    t[q+'a'].forEach(function(txt,i){
+      document.getElementById(q+'a'+(i+1)).textContent = txt;
+    });
+  });
+  document.getElementById('q6-text').textContent = t.q6;
+  document.getElementById('ta-q6').placeholder = t.ta6;
+  document.getElementById('d1-text').textContent = t.d1;
+  document.getElementById('q9-text').textContent = t.q9;
+  document.getElementById('ta-q9').placeholder = t.ta9;
+  document.getElementById('d2-text').textContent = t.d2;
+  document.getElementById('q10-text').textContent = t.q10;
+  document.getElementById('ta-q10').placeholder = t.ta10;
+  document.getElementById('d3-text').textContent = t.d3;
+  document.getElementById('q11-text').textContent = t.q11;
+  document.getElementById('ta-q11').placeholder = t.ta11;
+  document.getElementById('d4-text').textContent = t.d4;
+  document.getElementById('q12-text').textContent = t.q12;
+  document.getElementById('ta-q12').placeholder = t.ta12;
+  document.getElementById('btn-next-0').textContent = t.next;
+  document.getElementById('btn-back-1').textContent = t.back;
+  document.getElementById('btn-next-1').textContent = t.next;
+  document.getElementById('btn-back-2').textContent = t.back;
+  document.getElementById('btn-next-2').textContent = t.next;
+  document.getElementById('btn-back-3').textContent = t.back;
+  document.getElementById('btn-next-3').textContent = t.next;
+  document.getElementById('btn-back-4').textContent = t.back;
+  document.getElementById('btn-result').textContent = t.getProfile;
+  document.getElementById('btn-restart').textContent = t.restart;
+  document.getElementById('res-label').textContent = t.resLabel;
+  document.getElementById('res-title').textContent = t.resTitle;
+  document.getElementById('res-sub').textContent = t.resSub;
+  if(lastScores) buildDims(lastScores);
+}
 
 function pick(q, val, el) {
   var group = document.getElementById(q);
   var opts = group.getElementsByClassName('option');
-  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel');
+  for(var i=0;i<opts.length;i++) opts[i].classList.remove('sel');
   el.classList.add('sel');
   ans[q] = val;
 }
 
 function go(from, to) {
-  document.getElementById('b' + from).classList.remove('active');
-  document.getElementById('b' + to).classList.add('active');
-  var pct = (to / 5) * 100;
-  document.getElementById('pbar').style.width = pct + '%';
-  window.scrollTo(0, 0);
+  document.getElementById('b'+from).classList.remove('active');
+  document.getElementById('b'+to).classList.add('active');
+  document.getElementById('pbar').style.width = (to/5*100)+'%';
+  window.scrollTo(0,0);
+}
+
+function calcScores() {
+  var e=((ans.q1===4?10:ans.q1===2?7:ans.q1===1?3:5)+(ans.q2===4?10:ans.q2===3?8:ans.q2===2?5:2)+(ans.q3===4?10:ans.q3===3?9:ans.q3===2?4:3))/3;
+  var h=((ans.q4===2?9:ans.q4===3?10:ans.q4===4?8:5)+(ans.q5===2?10:ans.q5===3?8:ans.q5===1?4:2)+(ans.q6&&ans.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
+  var p=((ans.q7===4?10:ans.q7===2?8:ans.q7===3?7:4)+(ans.q8===4?10:ans.q8===3?7:ans.q8===2?6:3))/2;
+  var m=((ans.q9&&ans.q9.length>30?9:ans.q9&&ans.q9.length>10?7:4)+(ans.q10&&ans.q10.length>20?9:ans.q10&&ans.q10.length>5?7:4))/2;
+  var so=((ans.q11&&ans.q11.length>30?9:ans.q11&&ans.q11.length>10?7:4)+(ans.q12&&ans.q12.length>30?9:ans.q12&&ans.q12.length>10?7:4))/2;
+  return [Math.min(10,Math.round(e*10)/10),Math.min(10,Math.round(h*10)/10),Math.min(10,Math.round(p*10)/10),Math.min(10,Math.round(m*10)/10),Math.min(10,Math.round(so*10)/10)];
 }
 
 function showResult() {
   document.getElementById('b4').classList.remove('active');
-  document.getElementById('testwrap').style.display = 'none';
-  document.getElementById('reswrap').style.display = 'block';
-  document.getElementById('pbar').style.width = '100%';
-  window.scrollTo(0, 0);
-  var s = calcScores();
-  drawRadar(s);
-  buildDims(s);
-  var avg = (s[0]+s[1]+s[2]+s[3]+s[4]) / 5;
-  var note = avg >= 8 ? 'Профиль показывает высокую степень внутренней целостности. Ты действуешь из принципов, а не из обстоятельств. Это редко.' :
-             avg >= 6 ? 'Профиль неравномерный — как и у большинства живых людей. Сильные стороны реальные, слабые — честные. Хорошая точка отправления.' :
-             'Профиль показывает потенциал в развитии. Сапиократия — не оценка, а направление. Важно что ты здесь.';
-  document.getElementById('resnote').textContent = note;
-}
-
-function calcScores() {
-  var e = ((ans.q1===4?10:ans.q1===2?7:ans.q1===1?3:5)+(ans.q2===4?10:ans.q2===3?8:ans.q2===2?5:2)+(ans.q3===4?10:ans.q3===3?9:ans.q3===2?4:3))/3;
-  var h = ((ans.q4===2?9:ans.q4===3?10:ans.q4===4?8:5)+(ans.q5===2?10:ans.q5===3?8:ans.q5===1?4:2)+(ans.q6&&ans.q6.length>20?8:ans.q6&&ans.q6.length>5?6:4))/3;
-  var p = ((ans.q7===4?10:ans.q7===2?8:ans.q7===3?7:4)+(ans.q8===4?10:ans.q8===3?7:ans.q8===2?6:3))/2;
-  var m = ((ans.q9&&ans.q9.length>30?9:ans.q9&&ans.q9.length>10?7:4)+(ans.q10&&ans.q10.length>20?9:ans.q10&&ans.q10.length>5?7:4))/2;
-  var so = ((ans.q11&&ans.q11.length>30?9:ans.q11&&ans.q11.length>10?7:4)+(ans.q12&&ans.q12.length>30?9:ans.q12&&ans.q12.length>10?7:4))/2;
-  return [Math.min(10,Math.round(e*10)/10),Math.min(10,Math.round(h*10)/10),Math.min(10,Math.round(p*10)/10),Math.min(10,Math.round(m*10)/10),Math.min(10,Math.round(so*10)/10)];
+  document.getElementById('testwrap').style.display='none';
+  document.getElementById('reswrap').style.display='block';
+  document.getElementById('pbar').style.width='100%';
+  window.scrollTo(0,0);
+  lastScores = calcScores();
+  drawRadar(lastScores);
+  buildDims(lastScores);
+  var avg=(lastScores[0]+lastScores[1]+lastScores[2]+lastScores[3]+lastScores[4])/5;
+  var t=T[curLang];
+  document.getElementById('resnote').textContent = avg>=8?t.noteHigh:avg>=6?t.noteMid:t.noteLow;
 }
 
 function drawRadar(sc) {
-  var c = document.getElementById('radar');
-  var ctx = c.getContext('2d');
+  var c=document.getElementById('radar');
+  var ctx=c.getContext('2d');
   var cx=150,cy=150,r=110,n=5;
-  var lbls=['Эмпатия','Горизонт','Проф.','Мораль','Социум'];
+  var lbls=T[curLang].dimNames;
   var ang=[];
   for(var i=0;i<n;i++) ang.push((Math.PI*2*i/n)-Math.PI/2);
   ctx.clearRect(0,0,300,300);
@@ -333,31 +519,24 @@ function drawRadar(sc) {
   for(var i=0;i<n;i++){ctx.fillText(lbls[i],cx+(r+20)*Math.cos(ang[i]),cy+(r+20)*Math.sin(ang[i])+4);}
 }
 
-var dimInfo=[
-  {name:'Эмпатия',texts:['Эмпатия присутствует, но преимущественно реактивная.','Развитая эмпатия с чёткими границами. Видишь людей как отдельные миры.','Глубокая и зрелая эмпатия. Действуешь рефлекторно в кризисе.']},
-  {name:'Горизонт планирования',texts:['Ориентация на ближайший результат.','Компасный тип мышления. Цель видна, путь открывается в движении.','Расширенный горизонт. Думаешь о том что останется после тебя.']},
-  {name:'Профессионализм',texts:['Стандарт определяется внешними требованиями.','Внутренний стандарт выше внешнего контроля. Качество — личная позиция.','Абсолютный внутренний стандарт. Не можешь сделать плохо — физически не можешь.']},
-  {name:'Моральный компас',texts:['Решения принимаются ситуативно.','Принципиальность с гибкостью формы. Берёшь на себя груз решения.','Моральная целостность без театра. Принимаешь тяжёлые решения и несёшь их последствия.']},
-  {name:'Социальное мышление',texts:['Социальные вопросы воспринимаются как внешние.','Системное мышление. Видишь механизмы за явлениями.','Глубокое системное понимание. Один принцип: учить, строить, направлять энергию.']}
-];
-
 function buildDims(sc) {
+  var t=T[curLang];
   var c=document.getElementById('dims');c.innerHTML='';
   for(var i=0;i<5;i++){
-    var txt=sc[i]<5?dimInfo[i].texts[0]:sc[i]<8?dimInfo[i].texts[1]:dimInfo[i].texts[2];
+    var txt=sc[i]<5?t.dimTexts[i][0]:sc[i]<8?t.dimTexts[i][1]:t.dimTexts[i][2];
     var d=document.createElement('div');d.className='dim';
-    d.innerHTML='<div class="dim-head"><span class="dim-name">'+dimInfo[i].name+'</span><span class="dim-score">'+sc[i]+' / 10</span></div><div class="dim-bar"><div class="dim-fill" id="df'+i+'"></div></div><p class="dim-text">'+txt+'</p>';
+    d.innerHTML='<div class="dim-head"><span class="dim-name">'+t.dimNames[i]+'</span><span class="dim-score">'+sc[i]+' / 10</span></div><div class="dim-bar"><div class="dim-fill" id="df'+i+'"></div></div><p class="dim-text">'+txt+'</p>';
     c.appendChild(d);
   }
-  setTimeout(function(){for(var i=0;i<5;i++){(function(idx){setTimeout(function(){var el=document.getElementById('df'+idx);if(el)el.style.width=(sc[idx]*10)+'%';},idx*150);})(i);}},100);
+  var scores=sc;
+  setTimeout(function(){for(var i=0;i<5;i++){(function(idx){setTimeout(function(){var el=document.getElementById('df'+idx);if(el)el.style.width=(scores[idx]*10)+'%';},idx*150);})(i);}},100);
 }
 
 function restart() {
-  ans={};
+  ans={};lastScores=null;
   var opts=document.getElementsByClassName('option');
   for(var i=0;i<opts.length;i++) opts[i].classList.remove('sel');
-  var tas=document.getElementsByTagName('textarea');
-  for(var i=0;i<tas.length;i++) tas[i].value='';
+  ['ta-q6','ta-q9','ta-q10','ta-q11','ta-q12'].forEach(function(id){document.getElementById(id).value='';});
   document.getElementById('reswrap').style.display='none';
   document.getElementById('testwrap').style.display='block';
   for(var i=1;i<5;i++) document.getElementById('b'+i).classList.remove('active');
