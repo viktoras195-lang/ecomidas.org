@@ -1,76 +1,166 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Два источника — Sapiomidas</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Twee bronnen · Two Sources · Два источника — Sapiomidas</title>
   <style>
-    body { background: var(--forest); color: var(--mist); }
-    .essay-container {
-      max-width: 720px;
-      margin: 6rem auto 4rem;
-      padding: 0 2rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      line-height: 1.9;
+    :root {
+      --green: #2d5a3d;
+      --silver: #a8b8a0;
+      --emerald: #4a7c59;
+      --bg: #f5f2ec;
+      --text: #1a2318;
+      --muted: #6b7c66;
     }
-    .essay-container h1 {
-      font-size: 2rem;
-      color: var(--gold);
-      letter-spacing: .1em;
-      margin-bottom: 2.5rem;
-      text-align: center;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
     }
-    .essay-container p { margin-bottom: 1.2rem; }
-    .essay-lead {
-      color: var(--gold);
-      font-weight: 600;
+    header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 1px solid var(--silver);
     }
-    .essay-finale {
-      font-size: 1.4rem;
-      color: var(--gold);
-      font-weight: 600;
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+    header a {
+      color: var(--green);
       text-decoration: none;
-      opacity: .7;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
     }
-    .back-link:hover { opacity: 1; }
+    header a:hover { text-decoration: underline; }
+    .divider { color: var(--silver); }
+    .meta {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    article {
+      max-width: 680px;
+      margin: 1.5rem auto 5rem;
+      padding: 0 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--silver);
+    }
+    .lang-block { margin-bottom: 3.5rem; }
+    .lang-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 1.5rem;
+    }
+    p { margin-bottom: 1.4em; font-size: 1.05rem; }
+    .lead {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--green);
+    }
+    .finale {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--green);
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    em { font-style: italic; color: var(--emerald); }
+    .separator {
+      border: none;
+      border-top: 1px solid var(--silver);
+      margin: 3rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--silver);
+      letter-spacing: 0.05em;
+    }
   </style>
 </head>
 <body>
 
-<nav style="padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(74,124,82,.2);">
-  <a href="index.html" style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);text-decoration:none;letter-spacing:.05em;">Sapiomidas</a>
-</nav>
+  <header>
+    <a href="https://ecomidas.org/index.html">Sapiomidas</a>
+    <span class="divider">·</span>
+    <a href="https://ecomidas.org/index.html#essays">← Opstellen · Эссе · Essays</a>
+  </header>
 
-<div class="essay-container">
-  <h1>Два источника</h1>
+  <div class="meta">Opstel · Эссе · Essay · VanHolland · 2026</div>
 
-  <p class="essay-lead">Сапиократия — власть разума. Но кто готов отдать власть? Никто.</p>
-  <p class="essay-lead">Значит, не нужно за неё бороться. Нужно доказать, что разум и есть власть. Примером.</p>
+  <article>
+    <h1>Twee bronnen</h1>
+    <p class="subtitle">Two Sources · Два источника</p>
 
-  <p>Представьте два источника, рождённых в разных концах земли. Каждый прокладывает путь сквозь твёрдую породу — медленно, неостановимо, питая всё живое вокруг себя.</p>
+    <!-- NEDERLANDS -->
+    <div class="lang-block">
+      <div class="lang-label">Nederlands</div>
+      <p class="lead">Sapiocracy — de macht van het verstand. Maar wie is bereid macht af te staan? Niemand.</p>
+      <p class="lead">Dus hoef je er niet voor te strijden. Je moet bewijzen dat verstand zelf macht is. Door het voorbeeld.</p>
+      <p>Stel je twee bronnen voor, geboren aan de tegenovergestelde uiteinden van de aarde. Elk baant zich een weg door hard gesteente — langzaam, onstuitbaar, alles wat leeft rondom zich voedend.</p>
+      <p>De eerste bron — van een mens die verzadigd is van rijkdom. Op een dag begrijpt hij het: het kapitaal verdwijnt, maar de Schepper van een betere wereld — blijft. Dit is meer dan macht. Dit is eeuwigheid.</p>
+      <p>De tweede bron — van mensen die besloten het anders te proberen. In hun bedrijven, in hun projecten wordt niet geleid door degene die het hardst schreeuwt, maar door degene die het meest waardig is. Dit wordt niet bepaald door mening — maar door beproeving. Deze stroom is niet zwakker dan de eerste. Hij voedt het gesteente met dezelfde kracht, hetzelfde licht.</p>
+      <p>En toen ontmoetten ze elkaar.</p>
+      <p class="finale">Er ontstond een rivier. Er ontstond een nieuw leven.</p>
+    </div>
 
-  <p>Первый источник — от человека, перенасыщенного богатством. Однажды он понимает: капиталы уйдут, а Создателем лучшего мира — останется. Это больше чем власть. Это вечность.</p>
+    <hr class="separator">
 
-  <p>Второй источник — от людей, решивших попробовать иначе. В их компаниях, в их проектах руководит не тот кто громче, а тот кто достойнее. Это определяет не мнение — а испытание. Этот поток не слабее первого. Он питает породу той же силой, тем же светом.</p>
+    <!-- ENGLISH -->
+    <div class="lang-block">
+      <div class="lang-label">English</div>
+      <p class="lead">Sapiocracy — the power of reason. But who is willing to give up power? No one.</p>
+      <p class="lead">So there is no need to fight for it. You need to prove that reason itself is power. By example.</p>
+      <p>Imagine two springs, born at opposite ends of the earth. Each carves its path through solid rock — slowly, unstoppably, nourishing everything alive around it.</p>
+      <p>The first spring — from a person saturated with wealth. One day he understands: the capital will vanish, but the Creator of a better world — will remain. This is more than power. This is eternity.</p>
+      <p>The second spring — from people who decided to try differently. In their companies, in their projects, the one who leads is not the loudest, but the most worthy. This is determined not by opinion — but by trial. This stream is no weaker than the first. It nourishes the rock with the same force, the same light.</p>
+      <p>And then they met.</p>
+      <p class="finale">A river was born. A new life was born.</p>
+    </div>
 
-  <p>И вот они встретились.</p>
+    <hr class="separator">
 
-  <p class="essay-finale">Родилась река. Родилась новая жизнь.</p>
+    <!-- РУССКИЙ -->
+    <div class="lang-block">
+      <div class="lang-label">Русский</div>
+      <p class="lead">Сапиократия — власть разума. Но кто готов отдать власть? Никто.</p>
+      <p class="lead">Значит, не нужно за неё бороться. Нужно доказать, что разум и есть власть. Примером.</p>
+      <p>Представьте два источника, рождённых в разных концах земли. Каждый прокладывает путь сквозь твёрдую породу — медленно, неостановимо, питая всё живое вокруг себя.</p>
+      <p>Первый источник — от человека, перенасыщенного богатством. Однажды он понимает: капиталы уйдут, а Создателем лучшего мира — останется. Это больше чем власть. Это вечность.</p>
+      <p>Второй источник — от людей, решивших попробовать иначе. В их компаниях, в их проектах руководит не тот кто громче, а тот кто достойнее. Это определяет не мнение — а испытание. Этот поток не слабее первого. Он питает породу той же силой, тем же светом.</p>
+      <p>И вот они встретились.</p>
+      <p class="finale">Родилась река. Родилась новая жизнь.</p>
+    </div>
 
-  <a class="back-link" href="index.html">← Главная</a>
-</div>
+  </article>
+
+  <footer>
+    © 2026 Sapiomidas · ecomidas.org · VanHolland<br/>
+    Нидерланды · Netherlands · Nederland
+  </footer>
 
 </body>
 </html>
