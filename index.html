@@ -15,6 +15,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;display:
 .nav-links{display:flex;gap:2.2rem;list-style:none;}
 .nav-links a{color:var(--silver);text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;}
 .nav-links a:hover{color:var(--white);}
+
+/* ── БУРГЕР (мобильный) ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--silver);transition:all .3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* Мобильное меню */
+.nav-mobile{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:rgba(22,34,25,.97);flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{color:var(--silver);text-decoration:none;font-size:1rem;letter-spacing:.16em;text-transform:uppercase;transition:color .3s;}
+.nav-mobile a:hover{color:var(--white);}
+
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(61,107,69,.18) 0%,transparent 70%),linear-gradient(160deg,#1a2a1e 0%,#1e3024 50%,#162219 100%);}
 .hero-content{position:relative;z-index:2;max-width:700px;}
@@ -42,7 +56,14 @@ p{font-size:1rem;line-height:1.9;color:var(--silver);max-width:640px;}
 .contact-email{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,201,160,.3);padding-bottom:.2rem;transition:border-color .3s;}
 .contact-email:hover{border-color:var(--gold);}
 footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);font-size:.75rem;color:var(--stone);}
-@media(max-width:700px){nav{padding:1.2rem 1.5rem;}.nav-links{gap:1.2rem;}#hero,section{padding:5rem 1.5rem;}.concepts-grid{grid-template-columns:1fr;}}
+
+@media(max-width:700px){
+  nav{padding:1.2rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  #hero,section{padding:5rem 1.5rem;}
+  .concepts-grid{grid-template-columns:1fr;}
+}
 
 /* ── СЛОГАНЫ С ФОТОГРАФИЯМИ ── */
 #slogans {
@@ -171,7 +192,19 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <li><a href="#discussions">Dialoog · Dialogue · Дискуссии</a></li>
 <li><a href="#contact">Contact · Контакт</a></li>
 </ul>
+<button class="nav-burger" id="navBurger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
 </nav>
+
+<!-- Мобильное меню -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#about" onclick="closeMobile()">Over · About · О проекте</a>
+  <a href="#concepts" onclick="closeMobile()">Concepten · Concepts · Концепции</a>
+  <a href="#essays" onclick="closeMobile()">Essays · Эссе</a>
+  <a href="#discussions" onclick="closeMobile()">Dialoog · Dialogue · Дискуссии</a>
+  <a href="#contact" onclick="closeMobile()">Contact · Контакт</a>
+</div>
 
 <section id="hero" style="max-width:100%;padding-left:3rem;padding-right:3rem;">
 <div class="hero-bg"></div>
@@ -244,7 +277,8 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <span class="essay-title">Het leven is slimmer dan wij · Life Is Smarter Than Us · Жизнь умнее нас</span>
 <span class="essay-meta">Sapiomidas · 2026</span>
 </a>
-  <a class="essay-item" href="zhizn-silnee-sterker.html">
+
+<a class="essay-item" href="zhizn-silnee-sterker.html">
 <span class="essay-title">Het leven is sterker · Life Is Stronger · Жизнь сильнее</span>
 <span class="essay-meta">Sapiomidas · 2026</span>
 </a>
@@ -267,19 +301,21 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 </section>
 
 <section id="discussions" style="border-top:1px solid rgba(74,124,82,.2);">
-<p class="section-label">Дискуссии · Discussions</p>
+<p class="section-label">Дискуссии · Discussions · Discussies</p>
 <h2>De dialoog is open · Dialogue is open · Диалог открыт</h2>
-  <a class="essay-item" href="test.html">
-  <span class="essay-title">Тест Сапиократии</span>
-  <span class="essay-title">Sapiocracy Test · Тест Сапиократии</span>
+<a class="essay-item" href="test.html">
+  <span class="essay-title">Sapiocratietest · Sapiocracy Test · Тест Сапиократии</span>
+  <span class="essay-meta">Sapiomidas · 2026</span>
 </a>
 <p>Ideeën leven in botsing met andere ideeën. · Ideas live in collision with other ideas. · Идеи живут в столкновении с другими идеями.</p>
 </section>
 
 <section id="contact" style="border-top:1px solid rgba(74,124,82,.2);text-align:center;">
-<p class="section-label">Контакт · Contact</p>
-<h2>Связаться</h2>
-<p style="margin:0 auto 2rem;">Вопросы, размышления, предложения о сотрудничестве.</p>
+<p class="section-label">Contact · Contact · Контакт</p>
+<h2>Neem contact op · Get in touch · Связаться</h2>
+<p style="margin:0 auto 1rem;">Vragen, gedachten, samenwerkingsvoorstellen.</p>
+<p style="margin:0 auto 1rem;font-style:italic;color:var(--stone);font-size:.9rem;">Questions, reflections, proposals for collaboration.</p>
+<p style="margin:0 auto 2rem;font-style:italic;color:var(--stone);font-size:.9rem;">Вопросы, размышления, предложения о сотрудничестве.</p>
 <a class="contact-email" href="mailto:contact@ecomidas.org">contact@ecomidas.org</a>
 </section>
 
@@ -288,6 +324,26 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 </footer>
 
 <script>
+// ── БУРГЕР-МЕНЮ ──
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('navMobile');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+function closeMobile() {
+  burger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// Закрыть при клике вне меню
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMobile();
+});
+
+// ── СЛОГАНЫ ──
 const slogans = [
   {
     label: "Sapiocracy · Sapiocracy · Сапиократия",
@@ -372,3 +428,4 @@ buildDots();
 </script>
 </body>
 </html>
+
