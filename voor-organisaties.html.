@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voor organisaties · For organizations — Sapiomidas</title>
+<style>
+  :root{
+    --bg:#1d2a22;
+    --bg-deep:#16201a;
+    --ink:#f0f2ec;
+    --muted:#9fb3a3;
+    --accent:#c9d6b5;
+    --line:#3a4a3f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:32px 24px 80px;
+  }
+  .topnav{
+    font-size:.95rem;
+    color:var(--muted);
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:40px;
+  }
+  .topnav a{color:var(--accent);text-decoration:none;}
+  .topnav a:hover{text-decoration:underline;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:.72rem;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:2.5rem;
+    font-weight:normal;
+    line-height:1.12;
+    margin:0 0 .2em;
+    letter-spacing:.01em;
+  }
+  h1 .sub{
+    display:block;
+    font-size:1.15rem;
+    color:var(--muted);
+    font-style:italic;
+    margin-top:.5em;
+  }
+  h2{
+    font-size:1.55rem;
+    font-weight:normal;
+    line-height:1.2;
+    margin:0 0 .1em;
+  }
+  .lang{
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--muted);
+    margin:0 0 1.4em;
+  }
+  section{margin-top:56px;}
+  p{margin:0 0 1.1em;}
+  .lead{font-size:1.15rem;}
+  hr{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:48px 0;
+  }
+  .kicker{
+    color:var(--accent);
+    font-style:italic;
+  }
+  .turn{
+    margin-top:72px;
+    padding-top:8px;
+  }
+  .turn .eyebrow{color:var(--accent);}
+  .closing{
+    font-size:1.2rem;
+    font-style:italic;
+    color:var(--accent);
+    margin-top:1.4em;
+  }
+  .cta{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    font-size:.95rem;
+    color:var(--muted);
+  }
+  .cta a{color:var(--accent);text-decoration:none;}
+  .cta a:hover{text-decoration:underline;}
+  footer{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:.82rem;
+    color:var(--muted);
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topnav">
+    <a href="https://ecomidas.org/index.html">Sapiomidas</a> ·
+    <a href="https://ecomidas.org/index.html#about">← Over · About</a>
+  </div>
+
+  <!-- ===== DEEL I — DE BEREKENING / THE CALCULATION ===== -->
+
+  <div class="eyebrow">Voor organisaties · For organizations</div>
+  <h1>
+    Niet uit overtuiging — uit berekening
+    <span class="sub">Not out of conviction — out of calculation</span>
+  </h1>
+
+  <section>
+    <h2>De structuur</h2>
+    <p class="lang">Nederlands</p>
+    <p class="lead">Ecomidas vraagt niet om idealen. Het rekent.</p>
+    <p>Regelgeving wordt strenger. Grondstoffen worden duurder. Kapitaal wordt selectiever. Wie vandaag op vernietiging bouwt, bouwt op een model dat morgen verlies draait — niet door moraal, maar door rekenkunde.</p>
+    <p>Ecomidas keert de rekening om. Herstel van de natuur wordt een verifieerbaar bezit:</p>
+    <p>
+      — toegang tot goedkoper kapitaal;<br>
+      — bescherming tegen regelgevingsrisico;<br>
+      — een nieuwe regel in de omzet, niet in de kosten.
+    </p>
+    <p>Geen liefdadigheid. Een betere balans.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>The structure</h2>
+    <p class="lang">English</p>
+    <p class="lead">Ecomidas asks for no ideals. It does the math.</p>
+    <p>Regulation tightens. Raw materials grow costlier. Capital turns selective. Whoever builds on destruction today builds on a model that runs at a loss tomorrow — not through morality, but through arithmetic.</p>
+    <p>Ecomidas reverses the equation. Restoring nature becomes a verifiable asset:</p>
+    <p>
+      — access to cheaper capital;<br>
+      — protection from regulatory risk;<br>
+      — a new line in revenue, not in cost.
+    </p>
+    <p>Not charity. A better balance sheet.</p>
+  </section>
+
+  <!-- ===== DEEL II — DE OMSLAG / THE TURN: waarom ===== -->
+
+  <div class="turn">
+    <hr>
+    <div class="eyebrow">En dan — waarom · And then — why</div>
+
+    <section style="margin-top:32px;">
+      <h2>De derde weg</h2>
+      <p class="lang">Nederlands</p>
+      <p>Midas veranderde alles wat hij aanraakte in goud — en stierf van de honger.</p>
+      <p>De mens verandert niets meer; hij doodt. En sterft mee met wat hij doodt.</p>
+      <p>Sapiomidas wijst de derde weg: niet veranderen, niet doden — herstellen. En juist het herstel blijkt winstgevend.</p>
+      <p class="closing">Wie de bossen, de zeeën en de rivieren bewaart, bewaart niet uit goedheid — maar wordt, bijna onmerkbaar, een schepper van de toekomst van de planeet.</p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>The third way</h2>
+      <p class="lang">English</p>
+      <p>Midas turned all he touched to gold — and starved.</p>
+      <p>Mankind no longer transforms; it kills. And dies along with what it kills.</p>
+      <p>Sapiomidas points to the third way: neither to transform nor to kill, but to restore. And it is restoration that turns out to pay.</p>
+      <p class="closing">Whoever keeps the forests, the seas and the rivers does not keep them out of kindness — but becomes, almost imperceptibly, a creator of the planet's future.</p>
+    </section>
+  </div>
+
+  <div class="cta">
+    <p>Vragen, cijfers, voorstellen voor samenwerking · Questions, figures, proposals for collaboration</p>
+    <p><a href="mailto:contact@ecomidas.org">contact@ecomidas.org</a></p>
+  </div>
+
+  <footer>
+    © 2026 Sapiomidas · ecomidas.org · VanHolland<br>
+    Nederland · Netherlands
+  </footer>
+
+</div>
+</body>
+</html>
