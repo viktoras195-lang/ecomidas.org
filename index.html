@@ -37,6 +37,17 @@ h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6.5rem);fon
 .hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--gold);line-height:1.6;margin-bottom:.6rem;}
 .hero-tagline-sub{font-size:.85rem;color:var(--stone);line-height:1.8;letter-spacing:.06em;}
 .hero-divider{width:60px;height:1px;background:var(--emerald);margin:2.5rem 0;}
+
+/* ── ДВЕ ДВЕРИ (развилка в hero) ── */
+.hero-doors{display:flex;flex-wrap:wrap;gap:1rem;margin-top:.5rem;}
+.door{display:inline-flex;flex-direction:column;text-decoration:none;padding:1.1rem 1.8rem;min-width:235px;border:1px solid rgba(74,124,82,.45);transition:all .4s;}
+.door-main{background:rgba(184,201,160,.12);border-color:rgba(184,201,160,.55);}
+.door-main:hover{background:rgba(184,201,160,.22);border-color:var(--gold);}
+.door-soft:hover{background:rgba(45,74,50,.25);border-color:rgba(74,124,82,.7);}
+.door-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white);line-height:1.1;}
+.door-main .door-title{color:var(--gold);}
+.door-sub{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-top:.45rem;}
+
 section{padding:7rem 3rem;max-width:1100px;margin:0 auto;}
 .section-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--emerald);margin-bottom:1rem;}
 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:2rem;}
@@ -63,6 +74,8 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
   .nav-burger{display:flex;}
   #hero,section{padding:5rem 1.5rem;}
   .concepts-grid{grid-template-columns:1fr;}
+  .hero-doors{flex-direction:column;}
+  .door{min-width:0;width:100%;}
 }
 
 /* ── СЛОГАНЫ С ФОТОГРАФИЯМИ ── */
@@ -214,6 +227,16 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(74,124,82,.15);f
 <p class="hero-tagline">Kracht door rede en gezond verstand</p>
 <p class="hero-tagline-sub">Strength through reason and common sense<br>Сила в разуме и здравом смысле</p>
 <div class="hero-divider"></div>
+<div class="hero-doors">
+<a class="door door-main" href="voor-organisaties.html">
+<span class="door-title">Voor organisaties</span>
+<span class="door-sub">For organizations · Расчёт</span>
+</a>
+<a class="door door-soft" href="#about">
+<span class="door-title">Over het project</span>
+<span class="door-sub">About · О проекте</span>
+</a>
+</div>
 </div>
 </section>
 
@@ -428,4 +451,3 @@ buildDots();
 </script>
 </body>
 </html>
-
