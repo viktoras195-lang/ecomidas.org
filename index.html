@@ -54,7 +54,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-
 p{font-size:1rem;line-height:1.9;color:var(--silver);max-width:640px;}
 #about{border-top:1px solid rgba(74,124,82,.2);}
 .concepts-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;}
-.concept-card{padding:2.5rem;border:1px solid rgba(74,124,82,.25);background:rgba(45,74,50,.15);transition:border-color .4s,background .4s;position:relative;}
+.concepts-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;min-width:0;}
 .concept-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--emerald);transition:height .5s;}
 .concept-card:hover::before{height:100%;}
 .concept-card:hover{border-color:rgba(74,124,82,.5);background:rgba(45,74,50,.25);}
